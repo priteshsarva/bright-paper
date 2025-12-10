@@ -1,0 +1,345 @@
+================================================================================
+                    BRIGHT PAPER B2B WEBSITE - SETUP GUIDE
+================================================================================
+
+This document provides comprehensive instructions for setting up and configuring
+the Bright Paper B2B website.
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+
+1. Environment Variables Configuration
+2. Supabase Database Setup
+3. SMTP Email Configuration
+4. Image Management
+5. Customizing Company Information
+6. Deployment Instructions
+7. Troubleshooting
+
+================================================================================
+1. ENVIRONMENT VARIABLES CONFIGURATION
+================================================================================
+
+The application requires several environment variables to function properly.
+These are configured in a .env file at the root of the project.
+
+STEP 1: Create .env file
+------------------------
+Copy the .env.example file to create your .env file:
+
+    cp .env.example .env
+
+STEP 2: Configure Supabase Variables
+------------------------------------
+Required variables:
+- VITE_SUPABASE_URL: Your Supabase project URL
+- VITE_SUPABASE_ANON_KEY: Your Supabase anonymous key
+
+These are available in your Supabase project settings under:
+Project Settings > API > Project URL and Project API keys
+
+STEP 3: Configure SMTP Variables (for Edge Function)
+---------------------------------------------------
+Required for email notifications:
+- SMTP_HOST: SMTP server hostname (e.g., smtp.gmail.com)
+- SMTP_PORT: SMTP port (usually 587 for TLS)
+- SMTP_USER: SMTP username/email
+- SMTP_PASSWORD: SMTP password or app password
+- SMTP_FROM_EMAIL: Email address for sending notifications
+- SMTP_TO_EMAIL: Email address to receive inquiries (e.g., crm@brightpaper.co.in)
+
+IMPORTANT: SMTP variables are configured in Supabase Edge Function secrets,
+not in the .env file. The Edge Function is already deployed and ready to use
+once SMTP secrets are configured in your Supabase dashboard.
+
+================================================================================
+2. SUPABASE DATABASE SETUP
+================================================================================
+
+The database schema has been automatically created with three main tables:
+
+TABLE: inquiry_submissions
+--------------------------
+Stores customer inquiries and order requests
+Fields:
+- id (uuid): Unique identifier
+- name (text): Customer name
+- company (text): Company name
+- email (text): Contact email
+- phone (text): Contact phone
+- message (text): Inquiry message
+- inquiry_type (text): "Bulk Order" or "Dealer Partnership"
+- product_interest (text): Product(s) of interest
+- quantity (text): Estimated quantity
+- status (text): Inquiry status (default: "new")
+- created_at (timestamp): Submission timestamp
+
+TABLE: gallery_metadata
+-----------------------
+Stores image metadata for the gallery
+Fields:
+- id (uuid): Unique identifier
+- image_path (text): Path to image file
+- category (text): Main category
+- subcategory (text): Sub-category
+- title (text): Display title
+- description (text): Image description
+- alt_text (text): Accessibility text
+- created_at (timestamp): Creation timestamp
+
+TABLE: products
+--------------
+Stores product catalog information
+Fields:
+- id (uuid): Unique identifier
+- name (text): Product name
+- description (text): Product description
+- category (text): Product category
+- gsm_options (jsonb): Available GSM options
+- size_options (jsonb): Available sizes
+- features_json (jsonb): Product features
+- applications_json (jsonb): Product applications
+- image_path (text): Path to product image
+- created_at (timestamp): Creation timestamp
+
+Row Level Security (RLS):
+-------------------------
+All tables have RLS enabled with appropriate policies:
+- inquiry_submissions: Public insert, authenticated read/update
+- gallery_metadata: Public read, authenticated write
+- products: Public read, authenticated write
+
+================================================================================
+3. SMTP EMAIL CONFIGURATION
+================================================================================
+
+The website uses Supabase Edge Functions to send email notifications when
+inquiries are submitted.
+
+SMTP Configuration Steps:
+-------------------------
+
+1. The Edge Function "send-inquiry-email" is already deployed
+2. Configure SMTP secrets in your Supabase Dashboard:
+   - Navigate to Edge Functions > send-inquiry-email > Secrets
+   - Add the following secrets:
+     * SMTP_HOST
+     * SMTP_PORT
+     * SMTP_USER
+     * SMTP_PASSWORD
+     * SMTP_FROM_EMAIL
+     * SMTP_TO_EMAIL
+
+3. Email Templates:
+   The Edge Function sends two emails:
+   a) Confirmation email to customer
+   b) Notification email to admin (SMTP_TO_EMAIL)
+
+GMAIL SMTP EXAMPLE:
+------------------
+If using Gmail, use these settings:
+- SMTP_HOST: smtp.gmail.com
+- SMTP_PORT: 587
+- SMTP_USER: your-email@gmail.com
+- SMTP_PASSWORD: your-app-specific-password
+- SMTP_FROM_EMAIL: noreply@brightpaper.co.in
+- SMTP_TO_EMAIL: crm@brightpaper.co.in
+
+NOTE: For Gmail, you need to create an App Password:
+1. Go to Google Account Settings
+2. Security > 2-Step Verification > App Passwords
+3. Generate a new app password for "Mail"
+4. Use this password in SMTP_PASSWORD
+
+IMPORTANT: The current Edge Function includes placeholder SMTP functionality.
+For production use, you may need to integrate a proper email service like:
+- SendGrid
+- AWS SES
+- Mailgun
+- Postmark
+
+================================================================================
+4. IMAGE MANAGEMENT
+================================================================================
+
+The website uses a local image storage structure in the public/images directory.
+
+Directory Structure:
+-------------------
+public/images/
+├── hero/               (Hero section background images)
+├── team/               (Team and leadership photos)
+├── testimonials/       (Customer testimonials images)
+├── gallery/            (Gallery images)
+│   ├── applications/   (Product application images)
+│   ├── textures/       (Paper texture close-ups)
+│   ├── manufacturing/  (Factory and process images)
+│   └── finished-products/ (Final product images)
+└── products/           (Product catalog images)
+    ├── duplex-board/   (Duplex board product images)
+    ├── kraft-paper/    (Kraft paper product images)
+    ├── virgin-paper/   (Virgin paper product images)
+    ├── fbb/            (FBB product images)
+    └── sbs/            (SBS product images)
+
+Replacing Placeholder Images:
+-----------------------------
+
+1. HERO IMAGES:
+   - Add hero background images to public/images/hero/
+   - Update src/components/home/HeroSection.tsx if needed
+
+2. TEAM PHOTOS:
+   - Add team photos to public/images/team/
+   - Update src/components/home/MDMessage.tsx
+   - Update src/pages/About.tsx
+
+3. PRODUCT IMAGES:
+   - Add product images to respective folders in public/images/products/
+   - Update product detail pages in src/pages/ProductDetail.tsx
+
+4. GALLERY IMAGES:
+   - Add images to appropriate subdirectories in public/images/gallery/
+   - Optionally add metadata to gallery_metadata table in Supabase
+
+Image Guidelines:
+----------------
+- Use high-quality images (minimum 1920x1080 for hero images)
+- Optimize images for web (use tools like TinyPNG or ImageOptim)
+- Use consistent aspect ratios within each category
+- Name files descriptively (e.g., duplex-board-200gsm.jpg)
+- Consider using WebP format for better compression
+
+================================================================================
+5. CUSTOMIZING COMPANY INFORMATION
+================================================================================
+
+Company details are centralized in src/constants/index.ts
+
+COMPANY_INFO Object:
+-------------------
+Edit the following fields in src/constants/index.ts:
+
+export const COMPANY_INFO = {
+  name: 'Bright Paper',                    // Company name
+  tagline: '...',                          // Company tagline
+  establishedYear: 2007,                   // Year established
+  citiesServed: 28,                        // Number of cities served
+  dealerCount: '4,000+',                   // Number of dealers
+  turnover: '7,000 Cr',                    // Annual turnover
+  email: 'crm@brightpaper.co.in',          // Contact email
+  phone: '+91-XXXXXXXXXX',                 // Contact phone
+  whatsapp: '91XXXXXXXXXX',                // WhatsApp number
+  address: {
+    street: 'Your Address Line',           // Street address
+    city: 'Surat',                         // City
+    state: 'Gujarat',                      // State
+    country: 'India',                      // Country
+    pincode: 'XXXXXX'                      // Postal code
+  },
+  businessHours: {
+    weekdays: 'Monday - Saturday: 9:00 AM - 6:00 PM',
+    sunday: 'Sunday: Closed'
+  }
+};
+
+IMPORTANT: Update all placeholder values (XXXXXXXXXX) with actual information.
+
+Product Categories:
+------------------
+Product information can be customized in:
+- src/constants/index.ts (PRODUCT_CATEGORIES)
+- src/pages/ProductDetail.tsx (PRODUCT_DATA)
+
+================================================================================
+6. DEPLOYMENT INSTRUCTIONS
+================================================================================
+
+Development:
+-----------
+1. Install dependencies:
+   npm install
+
+2. Start development server:
+   npm run dev
+
+3. Access the site at:
+   http://localhost:5173
+
+Production Build:
+----------------
+1. Build the application:
+   npm run build
+
+2. Preview production build:
+   npm run preview
+
+3. Deploy the dist/ folder to your hosting provider
+
+Deployment Checklist:
+--------------------
+[ ] Update all COMPANY_INFO values in src/constants/index.ts
+[ ] Configure .env file with production Supabase credentials
+[ ] Configure SMTP secrets in Supabase Edge Functions
+[ ] Replace placeholder images with actual product photos
+[ ] Test contact form submission
+[ ] Verify email notifications are working
+[ ] Test all navigation links
+[ ] Check responsive design on mobile devices
+[ ] Run production build and verify no errors
+[ ] Set up SSL certificate for production domain
+
+================================================================================
+7. TROUBLESHOOTING
+================================================================================
+
+Common Issues and Solutions:
+---------------------------
+
+ISSUE: Contact form not submitting
+SOLUTION:
+- Check Supabase URL and keys in .env
+- Verify RLS policies are correctly set
+- Check browser console for errors
+- Ensure inquiry_submissions table exists
+
+ISSUE: Email notifications not working
+SOLUTION:
+- Verify SMTP secrets are configured in Supabase
+- Check Edge Function logs in Supabase dashboard
+- Ensure SMTP credentials are correct
+- For Gmail, verify App Password is being used
+
+ISSUE: Images not displaying
+SOLUTION:
+- Verify images are in correct public/images/ subdirectories
+- Check file names match references in code
+- Ensure image paths are correct (case-sensitive)
+- Clear browser cache and rebuild
+
+ISSUE: Products page showing "Product Not Found"
+SOLUTION:
+- Verify product slug in URL matches PRODUCT_CATEGORIES in constants
+- Check that PRODUCT_DATA includes the product
+- Ensure route is correctly defined in App.tsx
+
+ISSUE: Build fails
+SOLUTION:
+- Run npm install to ensure all dependencies are installed
+- Check for TypeScript errors: npm run typecheck
+- Verify all imports are correct
+- Check console for specific error messages
+
+Support:
+-------
+For additional support or questions, contact:
+- Email: crm@brightpaper.co.in
+- Check project documentation in the repository
+
+================================================================================
+END OF SETUP GUIDE
+================================================================================
+
+Last Updated: December 2024
+Version: 1.0
