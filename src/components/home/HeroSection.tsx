@@ -20,10 +20,10 @@ export default function HeroSection() {
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 mb-6 leading-tight">
             Premium Paper Products for
-            <span className="text-primary block mt-2">Modern Industry</span>
+            <span className="text-primary block mt-2">Sustainable Packaging</span>
           </h1>
           <p className="text-xl md:text-2xl text-neutral-600 mb-8 leading-relaxed">
-            Serving {COMPANY_INFO.citiesServed}+ cities across India since {COMPANY_INFO.establishedYear}
+            Serving across India since {COMPANY_INFO.establishedYear}
           </p>
           <p className="text-lg text-neutral-500 mb-10 max-w-2xl mx-auto">
             Your trusted partner in quality duplex board, kraft paper, and sustainable packaging solutions
@@ -47,7 +47,7 @@ export default function HeroSection() {
             </Button>
           </div>
 
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+          {/* <div className="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 {COMPANY_INFO.turnover}
@@ -66,7 +66,7 @@ export default function HeroSection() {
               </div>
               <div className="text-sm md:text-base text-neutral-600">Cities Served</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

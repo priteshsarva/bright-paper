@@ -11,7 +11,7 @@ export default function Card({
   children,
   className = '',
   hover = false,
-  padding = 'md'
+  padding = 'sm'
 }: CardProps) {
   const paddingStyles = {
     sm: 'p-4',

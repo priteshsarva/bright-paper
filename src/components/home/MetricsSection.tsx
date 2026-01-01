@@ -13,13 +13,13 @@ export default function MetricsSection() {
     {
       icon: Users,
       value: COMPANY_INFO.dealerCount,
-      label: 'Active Dealers',
+      label: 'Active Clients',
       color: 'text-secondary'
     },
     {
       icon: MapPin,
-      value: `${COMPANY_INFO.citiesServed}+`,
-      label: 'Cities Served',
+      value: `Cities`,
+      label: 'Across India',
       color: 'text-primary'
     },
     {

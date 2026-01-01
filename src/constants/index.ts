@@ -3,6 +3,7 @@ import craftpaper from '../assets/images/craftpaper.jpg'
 import virginPaper from '../assets/images/1.jfif'
 import SBS from '../assets/images/SBS.jfif'
 import FBB from '../assets/images/FBB.jfif'
+import { Twitter } from 'lucide-react'
 
 
 
@@ -11,17 +12,24 @@ export const COMPANY_INFO = {
   tagline: 'Your Trusted Partner in Quality Paper Products',
   establishedYear: 2007,
   citiesServed: 28,
-  dealerCount: '4,000+',
-  turnover: '7,000 Cr',
-  email: 'crm@brightpaper.co.in',
-  phone: '+91-XXXXXXXXXX',
-  whatsapp: '91XXXXXXXXXX',
+  dealerCount: '500+',
+  turnover: '50,000 Tons',
+  email: 'mail-info@brightpaper.co.in',
+  phone: '+916357012345',
+  whatsapp: '916357012345',
+  socialLinks: {
+    Twitter: 'https://twitter.com/yourprofile',
+    instagram: 'https://instagram.com/yourprofile',
+    linkedin: 'https://linkedin.com/in/yourprofile',
+    github: '',
+  },
   address: {
-    street: 'Your Address Line',
+    street: 'Plot no 128/129, 2nd floor, Laxminarayan industrial estate, BRC compound, Opp Daksheshwar mahadev temple, Udhana-pandesara',
     city: 'Surat',
     state: 'Gujarat',
     country: 'India',
-    pincode: 'XXXXXX'
+    pincode: '394210',
+    mapLink: 'https://maps.app.goo.gl/hcsx4hvK3T4ftKdu7'
   },
   businessHours: {
     weekdays: 'Monday - Saturday: 9:00 AM - 6:00 PM',
@@ -30,27 +38,6 @@ export const COMPANY_INFO = {
 };
 
 export const PRODUCT_CATEGORIES = [
-  {
-    id: 'duplex-board',
-    name: 'Duplex Board',
-    slug: 'duplex-board',
-    description: 'Premium quality duplex board for packaging solutions',
-    img: duplex
-  },
-  {
-    id: 'kraft-paper',
-    name: 'Kraft Paper',
-    slug: 'kraft-paper',
-    description: 'Durable kraft paper for various industrial applications',
-    img: craftpaper
-  },
-  {
-    id: 'virgin-paper',
-    name: 'Virgin Paper',
-    slug: 'virgin-paper',
-    description: 'High-grade virgin paper products',
-    img: virginPaper
-  },
   {
     id: 'fbb',
     name: 'FBB (Folding Box Board)',
@@ -64,7 +51,42 @@ export const PRODUCT_CATEGORIES = [
     slug: 'sbs',
     description: 'High-quality solid bleached sulfate board',
     img: SBS
-  }
+  },
+  {
+    id: 'virgin-paper',
+    name: 'Virgin Craft Paper',
+    slug: 'virgin-paper',
+    description: 'High-grade virgin paper products',
+    img: virginPaper
+  },
+  {
+    id: 'duplex-board',
+    name: 'Duplex Board',
+    slug: 'duplex-board',
+    description: 'Premium quality duplex board for packaging solutions',
+    img: duplex
+  },
+  {
+    id: 'Kraft-paper',
+    name: 'Kraft Paper',
+    slug: 'kraft-paper',
+    description: 'Durable kraft paper for various industrial applications',
+    img: craftpaper
+  },
+  {
+    id: 'Art-Paper',
+    name: 'Art Paper',
+    slug: 'art-paper',
+    description: 'High-quality art paper for printing and artistic applications',
+    img: craftpaper
+  },
+  {
+    id: 'Kappa-Board',
+    name: 'Kappa Board',
+    slug: 'kappa-board',
+    description: 'Durable kappa board for various industrial applications',
+    img: craftpaper
+  },
 ];
 
 export const GALLERY_CATEGORIES = [
@@ -83,11 +105,13 @@ export const NAVIGATION_MENU = [
     path: '/products',
     submenu: [
       { name: 'All Products', path: '/products' },
+      { name: 'FBB', path: '/products/fbb' },
+      { name: 'SBS', path: '/products/sbs' },
+      { name: 'Virgin Craft Paper', path: '/products/virgin-paper' },
       { name: 'Duplex Board', path: '/products/duplex-board' },
       { name: 'Kraft Paper', path: '/products/kraft-paper' },
-      { name: 'Virgin Paper', path: '/products/virgin-paper' },
-      { name: 'FBB', path: '/products/fbb' },
-      { name: 'SBS', path: '/products/sbs' }
+      { name: 'Art Paper', path: '/products/art-paper' },
+      { name: 'Kappa Board', path: '/products/kappa-board ' },
     ]
   },
   { name: 'Gallery', path: '/gallery' },
@@ -96,10 +120,10 @@ export const NAVIGATION_MENU = [
 ];
 
 export const KEY_METRICS = [
-  { label: 'Annual Turnover', value: '7,000 Cr', icon: 'TrendingUp' },
-  { label: 'Active Dealers', value: '4,000+', icon: 'Users' },
-  { label: 'Cities Served', value: '28+', icon: 'MapPin' },
-  { label: 'Years of Excellence', value: '18+', icon: 'Award' }
+  { label: 'Annual Turnover', value: '50,000 Tons', icon: 'TrendingUp' },
+  { label: 'Active Clients', value: '500+', icon: 'Users' },
+  { label: 'Cities Served', value: 'Cities', icon: 'MapPin' },
+  { label: 'Years of Excellence', value: '19+', icon: 'Award' }
 ];
 
 export const INQUIRY_TYPES = [

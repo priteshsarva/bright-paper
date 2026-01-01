@@ -8,9 +8,9 @@ export default function About() {
   const milestones = [
     { year: 2007, title: 'Company Founded', description: 'Established in Surat, Gujarat with a vision to deliver quality paper products' },
     { year: 2010, title: 'Expanded Network', description: 'Reached 10+ cities across India with growing dealer network' },
-    { year: 2015, title: 'Product Diversification', description: 'Introduced comprehensive range of duplex board and kraft paper products' },
-    { year: 2020, title: 'Digital Transformation', description: 'Modernized operations and enhanced customer service capabilities' },
-    { year: 2025, title: 'Industry Leader', description: `Serving ${COMPANY_INFO.citiesServed}+ cities with ${COMPANY_INFO.dealerCount} dealers and ${COMPANY_INFO.turnover} turnover` }
+    { year: 2015, title: 'Product Diversification', description: 'With a wide range of products and dealerships from 3 duplex board mills and 4 kraft paper mills, we began serving a variety of paper across South Gujarat.' },
+    { year: 2020, title: 'Digital Transformation', description: 'Equipped with the latest ERP system, we deliver on-time service consistently. ' },
+    { year: 2025, title: 'Industry Leader', description: `Serving across India with an expanded basket of FBB, SBS, cup stock, imported kraft, art paper, kappa board, and recycled duplex & kraft.` }
   ];
 
   const values = [
@@ -37,10 +37,10 @@ export default function About() {
   ];
 
   const achievements = [
-    { icon: Award, value: '18+', label: 'Years of Excellence' },
-    { icon: Users, value: '4,000+', label: 'Trusted Dealers' },
-    { icon: CheckCircle, value: '28+', label: 'Cities Served' },
-    { icon: Target, value: '7,000 Cr', label: 'Annual Turnover' }
+    { icon: Award, value: `${new Date().getFullYear() - COMPANY_INFO.establishedYear}`, label: 'Years of Excellence' },
+    { icon: Users, value: '500+', label: 'Clients' },
+    { icon: CheckCircle, value: 'Cities', label: 'Across India' },
+    { icon: Target, value: '50,000 Tons', label: 'Annual Turnover' }
   ];
 
   return (
@@ -63,7 +63,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-lg text-neutral-700 leading-relaxed">
                 <p>
-                  Founded in {COMPANY_INFO.establishedYear} in the vibrant city of Surat, Gujarat, Bright Paper began with a simple yet powerful mission: to provide high-quality paper products that meet the evolving needs of modern industry.
+                  Founded in {COMPANY_INFO.establishedYear} in the vibrant city of Surat, Gujarat, Bright Paper began with a simple yet powerful mission: to provide high-quality paper products that meet the evolving needs of packaging.
                 </p>
                 <p>
                   Over the past {new Date().getFullYear() - COMPANY_INFO.establishedYear} years, we have grown from a local supplier to a trusted national partner, serving {COMPANY_INFO.citiesServed}+ cities across India. Our success is built on the foundation of quality, reliability, and an unwavering commitment to customer satisfaction.

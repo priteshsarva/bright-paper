@@ -21,16 +21,17 @@ export default function CTASection() {
               size="lg"
               variant="secondary"
               onClick={() => navigate('/contact')}
-              className="bg-white text-primary hover:bg-neutral-100 shadow-lg"
+              className="bg-white text-black hover:bg-neutral-100 hover:text-white shadow-lg"
             >
               Submit Inquiry
               <ArrowRight className="inline ml-2" size={20} />
             </Button>
             <Button
               size="lg"
-              variant="outline"
+              variant="secondary"
               onClick={() => navigate('/products')}
-              className="border-white text-white hover:bg-white hover:text-primary"
+              className="bg-white text-black hover:bg-neutral-100 hover:text-white shadow-lg"
+            // className="border-white text-white hover:bg-white hover:text-black"
             >
               Browse Products
             </Button>

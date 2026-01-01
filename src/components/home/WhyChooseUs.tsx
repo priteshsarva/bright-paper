@@ -1,8 +1,10 @@
-import { CheckCircle, Leaf, Shield, Truck, Award, Users } from 'lucide-react';
+import { CheckCircle, Leaf, Shield, Truck, Award, Users, Warehouse, TimerReset  } from 'lucide-react';
 import Card from '../Card';
 import SectionHeader from '../SectionHeader';
+import { COMPANY_INFO } from '../../constants'; 
 
 export default function WhyChooseUs() {
+
   const features = [
     {
       icon: CheckCircle,
@@ -19,11 +21,11 @@ export default function WhyChooseUs() {
     {
       icon: Shield,
       title: 'Trusted by Thousands',
-      description: '4,000+ satisfied dealers and partners across India trust our products',
+      description: '500+ satisfied clients across India trust our products',
       color: 'text-primary'
     },
     {
-      icon: Truck,
+      icon: Truck, 
       title: 'Nationwide Distribution',
       description: 'Efficient delivery network covering 28+ cities with timely service',
       color: 'text-secondary'
@@ -31,7 +33,7 @@ export default function WhyChooseUs() {
     {
       icon: Award,
       title: 'Industry Experience',
-      description: '18+ years of expertise in paper products and packaging solutions',
+      description: `${new Date().getFullYear() - COMPANY_INFO.establishedYear}+ years of expertise in paper products and packaging solutions`,
       color: 'text-primary'
     },
     {
@@ -39,7 +41,26 @@ export default function WhyChooseUs() {
       title: 'Customer Support',
       description: 'Dedicated team providing personalized support and consultation',
       color: 'text-secondary'
+    },
+    {
+      icon: TimerReset,
+      title: 'Just-In-Time Delivery',
+      description: 'Reliable and timely deliveries to keep your operations running smoothly',
+      color: 'text-primary'
+    },
+    {
+      icon: Award,
+      title: 'Super Stockist Network',
+      description: 'Strong inventory support to ensure consistent availability',
+      color: 'text-secondary'
+    },
+    {
+      icon: Warehouse,
+      title: 'Dedicated Processing Centre',
+      description: 'We have a dedicated centre that enables us to supply customized sizes in both sheet and reel forms.',
+      color: 'text-primary'
     }
+   
   ];
 
   return (
@@ -47,7 +68,7 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Why Choose Bright Paper?"
-          subtitle="Experience the difference of working with India's trusted paper product supplier"
+          subtitle="We have a dedicated cutting center that enables us to supply customized sizes in both sheet and reel form. As a super stockist, we ensure timely and reliable delivery to meet our customers’ requirements."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
