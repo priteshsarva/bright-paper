@@ -4,6 +4,8 @@ import virginPaper from '../assets/images/1.jfif'
 import SBS from '../assets/images/SBS.jfif'
 import FBB from '../assets/images/FBB.jfif'
 import { Twitter } from 'lucide-react'
+import artPaper from '../assets/images/artpaper.jpg'
+import kappaBoard from '../assets/images/kappaboard.jpg'
 
 
 
@@ -77,15 +79,15 @@ export const PRODUCT_CATEGORIES = [
     id: 'Art-Paper',
     name: 'Art Paper',
     slug: 'art-paper',
-    description: 'High-quality art paper for printing and artistic applications',
-    img: craftpaper
+    description: 'Ultra-smooth coated paper for high-quality printing',
+    img: artPaper
   },
   {
     id: 'Kappa-Board',
     name: 'Kappa Board',
     slug: 'kappa-board',
-    description: 'Durable kappa board for various industrial applications',
-    img: craftpaper
+    description: 'Heavy-duty stiff board for rigid packaging needs',
+    img: kappaBoard
   },
 ];
 

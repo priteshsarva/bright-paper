@@ -25,10 +25,9 @@ export default function Products() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PRODUCT_CATEGORIES.map((product) => (
               <Card key={product.id} hover className="group cursor-pointer">
-                <div className="aspect-video bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-lg mb-6 flex items-center justify-center">
-                  <Package className="text-neutral-400 group-hover:text-primary transition-colors" size={64} />
-                <img src={product.img} alt=""/>
-              
+                <div className="aspect-video  rounded-lg mb-6 flex items-center justify-center">
+                  {/* <Package className="text-neutral-400 group-hover:text-primary transition-colors" size={64} /> */}
+                  <img src={product.img} alt="" style={{width:"100%"}}/>
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors">
                   {product.name}

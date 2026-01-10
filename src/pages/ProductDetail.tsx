@@ -9,6 +9,8 @@ import craftpaper from '../assets/images/craftpaper.jpg'
 import virginPaper from '../assets/images/1.jfif'
 import SBS from '../assets/images/SBS.jfif'
 import FBB from '../assets/images/FBB.jfif'
+import artPaper from '../assets/images/artpaper.jpg'
+import kappaBoard from '../assets/images/kappaboard.jpg'
 
 interface ProductData {
   [key: string]: {
@@ -50,10 +52,9 @@ const PRODUCT_DATA: ProductData = {
       'Product packaging',
       'Industrial packaging'
     ],
-
   },
   'kraft-paper': {
-    img: craftpaper,
+    img: craftpaper, // Keep variable name as is, or rename to kraftPaper if you update imports
     name: 'Kraft Paper',
     description: 'Durable kraft paper for various industrial applications',
     fullDescription: 'High-quality kraft paper known for its exceptional strength and versatility. Perfect for heavy-duty packaging and industrial applications where durability is paramount.',
@@ -78,6 +79,62 @@ const PRODUCT_DATA: ProductData = {
       'Industrial packaging',
       'Cement bags',
       'Food packaging'
+    ]
+  },
+  'art-paper': {
+    img: artPaper,
+    name: 'Art Paper',
+    description: 'Ultra-smooth coated paper for high-quality printing',
+    fullDescription: 'Premium Art Paper featuring a smooth clay coating that ensures vibrant color reproduction and sharp detail. Ideal for high-end marketing materials and photographic printing.',
+    specifications: [
+      { label: 'GSM Range', value: '90-350 GSM' },
+      { label: 'Finish', value: 'Gloss, Matte, Satin' },
+      { label: 'Coating', value: 'Double sided (C2S)' },
+      { label: 'Brightness', value: '91% and above' }
+    ],
+    features: [
+      'Exceptional ink holdout',
+      'High surface smoothness',
+      'Vivid color reproduction',
+      'Uniform coating',
+      'Fast drying time',
+      'Premium aesthetic appeal'
+    ],
+    applications: [
+      'Brochures and flyers',
+      'Magazines',
+      'Calendars',
+      'Postcards',
+      'Art books',
+      'Marketing collateral'
+    ]
+  },
+  'kappa-board': {  
+    img: kappaBoard,
+    name: 'Kappa Board',
+    description: 'Heavy-duty stiff board for rigid packaging',
+    fullDescription: 'Kappa Board (Grey Board) is a high-density, rigid material used as a core for high-quality book covers and luxury boxes, offering maximum structural integrity.',
+    specifications: [
+      { label: 'Thickness', value: '1mm - 4mm' },
+      { label: 'GSM Range', value: '600-2500 GSM' },
+      { label: 'Color', value: 'Grey' },
+      { label: 'Sizes', value: 'Custom sheets available' }
+    ],
+    features: [
+      'Extreme rigidity and stiffness',
+      'Excellent flatness',
+      'Smooth surface for lamination',
+      'High impact resistance',
+      'Environmentally friendly (Recycled)',
+      'Consistent thickness'
+    ],
+    applications: [
+      'Hardcover book binding',
+      'Luxury rigid boxes',
+      'Jigsaw puzzles',
+      'Game boards',
+      'Architectural models',
+      'Diary and album covers'
     ]
   },
   'virgin-paper': {
@@ -210,9 +267,9 @@ export default function ProductDetail() {
       <PageWrapper>
         <section className="py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div className="aspect-square bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-2xl flex items-center justify-center">
-              <Package className="text-neutral-400" size={120} />
-              <img src={productData.img} alt="" size={120} />
+            <div className="aspect-square  rounded-2xl flex items-center justify-center">
+              {/* <Package className="text-neutral-400" size={120} /> */}
+              <img src={productData.img} alt="" size={120} style={{width:"100%"}}/>
 
             </div>
 

@@ -25,39 +25,56 @@ export default function Contact() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    setSuccess(false);
+ const handleSubmit = async (e: FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  setError('');
+  setSuccess(false);
 
-    try {
-      const { error: insertError } = await supabase
-        .from('inquiry_submissions')
-        .insert([formData]);
+  // Replace this with the URL you copied in Step 1
+  const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzmCWYyyViSwOgmS5vZJpaqsmxqtH9JsFXQsOPkG20POfmCqxSa4yG66uFf_Zi12vDjrg/exec';
 
-      if (insertError) throw insertError;
+  try {
+    // 1. Save to Supabase (Existing logic)
+    // const { error: insertError } = await supabase
+    //   .from('inquiry_submissions')
+    //   .insert([formData]);
 
-      setSuccess(true);
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        message: '',
-        inquiry_type: 'Bulk Order',
-        product_interest: '',
-        quantity: ''
-      });
+    // if (insertError) throw insertError;
 
-      setTimeout(() => setSuccess(false), 5000);
-    } catch (err) {
-      console.error('Error submitting inquiry:', err);
-      setError('Failed to submit inquiry. Please try again or contact us directly.');
-    } finally {
-      setLoading(false);
-    }
-  };
+    // 2. Save to Google Sheets (Parallel logic)
+    // Use 'no-cors' mode because Google Apps Script redirects cause CORS issues in browsers, 
+    // but the data will still be sent successfully.
+    await fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    // 3. Success Handling
+    setSuccess(true);
+    setFormData({
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      message: '',
+      inquiry_type: 'Bulk Order',
+      product_interest: '',
+      quantity: ''
+    });
+
+    setTimeout(() => setSuccess(false), 5000);
+  } catch (err) {
+    console.error('Error submitting inquiry:', err);
+    setError('Failed to submit inquiry. Please try again or contact us directly.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
