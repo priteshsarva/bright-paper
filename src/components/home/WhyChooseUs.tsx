@@ -86,7 +86,7 @@ export default function WhyChooseUs() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} hover>
+            <Card key={index} hover className='bg-white'>
               <feature.icon className={`${feature.color} mb-4`} size={40} />
               <h3 className="text-xl font-bold text-neutral-900 mb-3">
                 {feature.title}

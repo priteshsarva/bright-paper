@@ -69,7 +69,7 @@ export default function About() {
         <section className="py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6 text-[#F36B2C]">
+              <h2 className="text-3xl md:text-4xl font-bold  mb-6 text-[#F36B2C]">
                 Our Story
               </h2>
               <div className="space-y-4 text-lg text-neutral-700 leading-relaxed">
@@ -130,7 +130,7 @@ export default function About() {
                   >
                     {/* Card */}
                     <div className={`flex-1 ${index % 2 === 0 ? "text-right" : "text-left"}`}>
-                      <Card className="border-2 border-[#5A8F2E] rounded-2xl p-6 shadow-[0_0_0_2px_rgba(90,143,46,0.15)] bg-[#F6FBF3]">
+                      <Card className="bg-white border-2 border-[#5A8F2E] rounded-2xl p-6 shadow-[0_0_0_2px_rgba(90,143,46,0.15)] bg-[#F6FBF3]">
                         {/* Year (Orange stays) */}
                         <div className="text-lg font-bold text-[#F36B2C] mb-1">
                           {milestone.year}

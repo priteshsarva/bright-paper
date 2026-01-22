@@ -117,7 +117,7 @@ export default function Services() {
               <Card
                 key={index}
                 hover
-                className="bg-[#F4FAF1] border border-[#E1ECDC] rounded-2xl p-8 shadow-sm hover:shadow-md transition"
+                className="bg-[#F4FAF1] border-2 border-[#5A8F2E] rounded-2xl p-8 shadow-sm hover:shadow-md transition"
               >
                 {/* Icon */}
                 <service.icon
@@ -196,13 +196,13 @@ export default function Services() {
             // backgroundSize: "auto",
             backgroundSize: "750px 750px",
           }}>
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold  mb-12 text-center text-[#F36B2C]">
               Industries & Applications
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {industries.map((industry, index) => (
-                <Card key={index} className="text-center">
-                  <p className="font-semibold text-neutral-800">{industry}</p>
+                <Card key={index} className="text-center bg-white">
+                  <p className="font-semibold   text-[#5a8f2e]">{industry}</p>
                 </Card>
               ))}
             </div>
