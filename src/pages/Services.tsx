@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import { Truck, Users, Award, Clock, ShieldCheck, Headphones } from 'lucide-react';
+import { Truck, Handshake, Users, Award, Clock, ShieldCheck, Headphones } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 import SectionHeader from '../components/SectionHeader';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { COMPANY_INFO } from '../constants';
+import distribution from '../assets/images/distribution.jpg'
+import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
+import serviceBg from '../assets/images/pattern.jpg';
 
 export default function Services() {
   const navigate = useNavigate();
@@ -22,14 +25,14 @@ export default function Services() {
       ]
     },
     {
-      icon: Users,
-      title: 'Dealer Partnership Program',
-      description: 'Join our network of 4,000+ trusted dealers and grow your business with comprehensive support and competitive benefits.',
+      icon: Handshake,
+      title: 'Budget-friendly & Value - Packed',
+      description: 'Unbeatable prices on top-quality products buy smart and save money every day',
       features: [
-        'Competitive pricing',
-        'Marketing support',
-        'Training programs',
-        'Dedicated account manager'
+        'Competitive Price',
+        'Bulk Quantity Discount',
+        'Value For Money',
+        'Customer Budget Friendly'
       ]
     },
     {
@@ -79,48 +82,73 @@ export default function Services() {
   ];
 
   const industries = [
-    'Packaging Industry',
-    'Printing & Publishing',
-    'Retail & E-commerce',
     'Food & Beverage',
-    'Pharmaceutical',
-    'Consumer Goods',
-    'Manufacturing',
-    'Textile Industry'
+    'E-commerce ', ' Retail',
+    'Healthcare ', ' Pharma',
+    'Cosmetics ', ' Luxury Goods',
+    'Industrial ', ' Construction products',
+    'Electronics',
+    'FMCG ',
+    'Agriculture',
   ];
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-primary-50 to-white py-16">
-        <PageWrapper>
-          <SectionHeader
-            title="Our Services"
-            subtitle="Comprehensive solutions and support for all your paper product needs"
-          />
-        </PageWrapper>
+      <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
+        <img
+          src={backgroundImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-100 blur-[0px] z-0"
+        />
+        <div className="relative z-10">
+          <PageWrapper>
+            <SectionHeader
+              title="Our Services"
+              subtitle="Comprehensive solutions and support for all your paper product needs"
+            />
+          </PageWrapper>
+        </div>
       </section>
 
       <PageWrapper>
         <section className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             {services.map((service, index) => (
-              <Card key={index} hover>
-                <service.icon className="text-primary mb-4" size={48} />
-                <h3 className="text-2xl font-bold text-neutral-900 mb-3">
+              <Card
+                key={index}
+                hover
+                className="bg-[#F4FAF1] border border-[#E1ECDC] rounded-2xl p-8 shadow-sm hover:shadow-md transition"
+              >
+                {/* Icon */}
+                <service.icon
+                  className="text-[#F36B2C] mb-5"
+                  size={48}
+                />
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-[#5A8F2E] mb-3">
                   {service.title}
                 </h3>
-                <p className="text-neutral-600 mb-6">
+
+                {/* Description */}
+                <p className="text-[#6B7280] mb-6 leading-relaxed">
                   {service.description}
                 </p>
-                <ul className="space-y-2">
+
+                {/* Features */}
+                <ul className="space-y-3">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-sm text-neutral-700 flex items-center">
-                      <div className="w-1.5 h-1.5 bg-secondary rounded-full mr-2"></div>
+                    <li
+                      key={idx}
+                      className="text-sm text-[#374151] flex items-center"
+                    >
+                      <span className="w-2 h-2 bg-[#7CB342] rounded-full mr-3"></span>
                       {feature}
                     </li>
                   ))}
                 </ul>
               </Card>
+
             ))}
           </div>
 
@@ -132,7 +160,7 @@ export default function Services() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
                   <h3 className="text-2xl font-bold text-neutral-900 mb-6">
-                    Serving {COMPANY_INFO.citiesServed}+ Cities Across India
+                    Serving Across India
                   </h3>
                   <p className="text-lg text-neutral-700 mb-6 leading-relaxed">
                     Our extensive distribution network ensures that quality paper products reach you wherever you are in India. With strategic partnerships and efficient logistics, we guarantee timely delivery and consistent supply.
@@ -148,22 +176,28 @@ export default function Services() {
                     <div className="flex items-center">
                       <Users className="text-primary mr-3" size={24} />
                       <div>
-                        <div className="font-semibold text-neutral-900">{COMPANY_INFO.dealerCount} Dealers</div>
+                        <div className="font-semibold text-neutral-900">{COMPANY_INFO.dealerCount} Customers</div>
                         <div className="text-sm text-neutral-600">Trusted nationwide network</div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="aspect-square bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-2xl flex items-center justify-center">
-                  <Truck className="text-neutral-400" size={120} />
+                  {/* <Truck className="text-neutral-400" size={120} /> */}
+                  <img src={distribution} alt="distribution" />
                 </div>
               </div>
             </Card>
           </div>
 
-          <div className="mb-20">
+          <div className="mb-20" style={{
+            backgroundImage: `url(${serviceBg})`,
+            backgroundRepeat: "repeat",
+            // backgroundSize: "auto",
+            backgroundSize: "750px 750px",
+          }}>
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-12 text-center">
-              Industries We Serve
+              Industries & Applications
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {industries.map((industry, index) => (
@@ -185,7 +219,7 @@ export default function Services() {
               size="lg"
               variant="secondary"
               onClick={() => navigate('/contact')}
-              className="bg-white text-primary hover:bg-neutral-100"
+              className="bg-white text-black hover:bg-neutral-100 hover:text-white shadow-lg"
             >
               Apply for Partnership
             </Button>

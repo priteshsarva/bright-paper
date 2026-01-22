@@ -2,17 +2,23 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Button from '../Button';
 import { COMPANY_INFO } from '../../constants';
+import heroBg from '../../assets/images/heropageimage.jpg';
 
 export default function HeroSection() {
   const navigate = useNavigate();
 
   return (
     <section className="relative bg-gradient-to-br from-neutral-50 to-neutral-100 py-20 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-50">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'linear-gradient(30deg, #FF6B35 12%, transparent 12.5%, transparent 87%, #FF6B35 87.5%, #FF6B35), linear-gradient(150deg, #FF6B35 12%, transparent 12.5%, transparent 87%, #FF6B35 87.5%, #FF6B35), linear-gradient(30deg, #FF6B35 12%, transparent 12.5%, transparent 87%, #FF6B35 87.5%, #FF6B35), linear-gradient(150deg, #FF6B35 12%, transparent 12.5%, transparent 87%, #FF6B35 87.5%, #FF6B35)',
-          backgroundSize: '80px 140px',
-          backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px'
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          filter: 'blur(3px)',
+          // backgroundImage: 'linear-gradient(30deg, #FF6B35 12%, transparent 12.5%, transparent 87%, #FF6B35 87.5%, #FF6B35), linear-gradient(150deg, #FF6B35 12%, transparent 12.5%, transparent 87%, #FF6B35 87.5%, #FF6B35), linear-gradient(30deg, #FF6B35 12%, transparent 12.5%, transparent 87%, #FF6B35 87.5%, #FF6B35), linear-gradient(150deg, #FF6B35 12%, transparent 12.5%, transparent 87%, #FF6B35 87.5%, #FF6B35)',
+          // backgroundSize: '80px 140px',
+          // backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px'
         }}></div>
       </div>
 

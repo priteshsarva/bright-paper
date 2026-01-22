@@ -5,19 +5,28 @@ import SectionHeader from '../components/SectionHeader';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { PRODUCT_CATEGORIES } from '../constants';
+import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
+
 
 export default function Products() {
   const navigate = useNavigate();
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-primary-50 to-white py-16">
-        <PageWrapper>
-          <SectionHeader
-            title="Our Products"
-            subtitle="Comprehensive range of premium paper products for diverse industrial applications"
-          />
-        </PageWrapper>
+      <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
+        <img
+          src={backgroundImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-100 blur-[0px] z-0"
+        />
+        <div className="relative z-10">
+          <PageWrapper>
+            <SectionHeader
+              title="Our Products"
+              subtitle="Comprehensive range of premium paper products for diverse industrial applications"
+            />
+          </PageWrapper>
+        </div>
       </section>
 
       <PageWrapper>
@@ -27,7 +36,7 @@ export default function Products() {
               <Card key={product.id} hover className="group cursor-pointer">
                 <div className="aspect-video  rounded-lg mb-6 flex items-center justify-center">
                   {/* <Package className="text-neutral-400 group-hover:text-primary transition-colors" size={64} /> */}
-                  <img src={product.img} alt="" style={{width:"100%"}}/>
+                  <img src={product.img} alt="" style={{ width: "100%" }} />
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors">
                   {product.name}

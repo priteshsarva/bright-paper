@@ -1,7 +1,8 @@
-import { CheckCircle, Leaf, Shield, Truck, Award, Users, Warehouse, TimerReset  } from 'lucide-react';
+import { CheckCircle, Leaf, Shield, Truck, Award, Users, Warehouse, TimerReset } from 'lucide-react';
 import Card from '../Card';
 import SectionHeader from '../SectionHeader';
-import { COMPANY_INFO } from '../../constants'; 
+import { COMPANY_INFO } from '../../constants';
+import whyChooseUs from '../../assets/images/types of papers.jpeg';
 
 export default function WhyChooseUs() {
 
@@ -21,13 +22,13 @@ export default function WhyChooseUs() {
     {
       icon: Shield,
       title: 'Trusted by Thousands',
-      description: '500+ satisfied clients across India trust our products',
+      description: '500+ satisfied customer across India trust our products',
       color: 'text-primary'
     },
     {
-      icon: Truck, 
+      icon: Truck,
       title: 'Nationwide Distribution',
-      description: 'Efficient delivery network covering 28+ cities with timely service',
+      description: 'Efficient delivery network across nation wide with timely service',
       color: 'text-secondary'
     },
     {
@@ -60,12 +61,24 @@ export default function WhyChooseUs() {
       description: 'We have a dedicated centre that enables us to supply customized sizes in both sheet and reel forms.',
       color: 'text-primary'
     }
-   
+
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-secondary-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 bg-gradient-to-br from-secondary-50 to-white overflow-hidden">
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url(${whyChooseUs})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          filter: 'blur(2px)',
+          opacity: 0.5,
+          transform: 'scale(1.05)',
+        }}
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Why Choose Bright Paper?"
           subtitle="We have a dedicated cutting center that enables us to supply customized sizes in both sheet and reel form. As a super stockist, we ensure timely and reliable delivery to meet our customers’ requirements."

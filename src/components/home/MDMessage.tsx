@@ -1,7 +1,7 @@
 import { Quote } from 'lucide-react';
 import Card from '../Card';
 import { COMPANY_INFO } from '../../constants';
-import MDSIR from '../../assets/images/logo.png'
+import MDSIR from '../../assets/images/1520152901291.jpg'
 
 export default function MDMessage() {
   return (
@@ -9,9 +9,16 @@ export default function MDMessage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="aspect-square from-neutral-200 to-neutral-300 rounded-2xl flex items-center justify-center">
-              
-              <img src={MDSIR} alt="" style={{width:"100%"}} />
+            <div className="aspect-square from-neutral-200 to-neutral-300 rounded-2xl flex items-center justify-center" >
+
+              <img src={MDSIR} alt="" style={{
+                width: "100%",
+                // height: "100%",
+                objectFit: "cover",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }} />
 
               {/* <div className="text-center">
                 <div className="w-32 h-32 bg-neutral-400 rounded-full mx-auto mb-4"></div>
@@ -30,7 +37,7 @@ export default function MDMessage() {
                 For over {new Date().getFullYear() - COMPANY_INFO.establishedYear} years, {COMPANY_INFO.name} has been at the forefront of delivering premium paper products to industries across India.
               </p>
               <p>
-                Our commitment to excellence, sustainable practices, and customer satisfaction has earned us the trust of over {COMPANY_INFO.dealerCount} dealers nationwide.
+                Our commitment to excellence, sustainable practices, and customer satisfaction has earned us the trust of over {COMPANY_INFO.dealerCount} customers nationwide.
               </p>
               <p>
                 As we continue to grow and innovate, we remain dedicated to our founding principles: quality, reliability, and environmental responsibility.

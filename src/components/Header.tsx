@@ -22,7 +22,7 @@ export default function Header() {
             {/* <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <FileText className="text-white" size={24} />
             </div> */}
-              <img src={logo} alt="" className=" h-20"/>
+            <img src={logo} alt="" className=" h-20" />
 
             {/* <span className="text-2xl font-bold text-neutral-900">{COMPANY_INFO.name}</span> */}
           </Link>
@@ -32,25 +32,30 @@ export default function Header() {
               item.submenu ? (
                 <div
                   key={item.name}
-                  className="relative"
+                  className="relative h-full flex items-center" // added h-full flex items-center for better stability
                   onMouseEnter={() => setProductsOpen(true)}
                   onMouseLeave={() => setProductsOpen(false)}
                 >
-                  <button className="flex items-center space-x-1 text-neutral-700 hover:text-primary transition-colors font-medium">
+                  <button className="flex items-center space-x-1 text-neutral-700 hover:text-primary transition-colors font-medium py-2"> {/* Added py-2 to button to increase hit area */}
                     <span>{item.name}</span>
                     <ChevronDown size={16} />
                   </button>
+
                   {productsOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-strong py-2 animate-fade-in">
-                      {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          to={subItem.path}
-                          className="block px-4 py-2 text-neutral-700 hover:bg-primary-50 hover:text-primary transition-colors"
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
+
+                    <div className="absolute top-full left-0 w-56 pt-2 z-50 animate-fade-in">
+                      {/* Inner div holds the visual styling */}
+                      <div className="bg-white rounded-lg shadow-strong py-2 border border-neutral-100">
+                        {item.submenu.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            to={subItem.path}
+                            className="block px-4 py-2 text-neutral-700 hover:bg-primary-50 hover:text-primary transition-colors"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>

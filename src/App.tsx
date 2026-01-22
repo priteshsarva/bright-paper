@@ -8,10 +8,13 @@ import ProductDetail from './pages/ProductDetail';
 import Gallery from './pages/Gallery';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
+import CTASection from './components/home/CTASection';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-white">
         <Header />
         <main className="flex-grow">
@@ -25,6 +28,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+        <CTASection />
         <Footer />
       </div>
     </Router>

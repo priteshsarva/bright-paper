@@ -22,7 +22,7 @@ export default function SectionHeader({
         {title}
       </h2>
       {subtitle && (
-        <p className={`text-lg md:text-xl text-neutral-600 max-w-3xl ${alignmentClass}`}>
+        <p className={`text-lg md:text-xl text-black-600 max-w-3xl ${alignmentClass}`}>
           {subtitle}
         </p>
       )}

@@ -5,7 +5,8 @@ import SBS from '../assets/images/SBS.jfif'
 import FBB from '../assets/images/FBB.jfif'
 import { Twitter } from 'lucide-react'
 import artPaper from '../assets/images/artpaper.jpg'
-import kappaBoard from '../assets/images/kappaboard.jpg'
+import kappaBoard from '../assets/images/kappaboard-4.jpg'
+import VIRGINKRAFT from '../assets/images/VIRGIN KRAFT.jpg'
 
 
 
@@ -20,9 +21,9 @@ export const COMPANY_INFO = {
   phone: '+916357012345',
   whatsapp: '916357012345',
   socialLinks: {
-    Twitter: 'https://twitter.com/yourprofile',
-    instagram: 'https://instagram.com/yourprofile',
-    linkedin: 'https://linkedin.com/in/yourprofile',
+    // Twitter: 'https://twitter.com/yourprofile',
+    instagram: 'https://www.instagram.com/brightpaper_company',
+    // linkedin: 'https://linkedin.com/in/yourprofile',
     github: '',
   },
   address: {
@@ -56,22 +57,22 @@ export const PRODUCT_CATEGORIES = [
   },
   {
     id: 'virgin-paper',
-    name: 'Virgin Craft Paper',
+    name: 'Virgin Kraft Paper',
     slug: 'virgin-paper',
     description: 'High-grade virgin paper products',
-    img: virginPaper
+    img: VIRGINKRAFT
   },
   {
     id: 'duplex-board',
     name: 'Duplex Board',
     slug: 'duplex-board',
     description: 'Premium quality duplex board for packaging solutions',
-    img: duplex
+    img: virginPaper
   },
   {
-    id: 'Kraft-paper',
-    name: 'Kraft Paper',
-    slug: 'kraft-paper',
+    id: 'recycled-kraft-paper',
+    name: 'Recycled Kraft Paper',
+    slug: 'recycled-kraft-paper',
     description: 'Durable kraft paper for various industrial applications',
     img: craftpaper
   },
@@ -94,9 +95,9 @@ export const PRODUCT_CATEGORIES = [
 export const GALLERY_CATEGORIES = [
   { id: 'all', name: 'All', slug: 'all' },
   { id: 'applications', name: 'Applications', slug: 'applications' },
-  { id: 'textures', name: 'Textures', slug: 'textures' },
-  { id: 'manufacturing', name: 'Manufacturing', slug: 'manufacturing' },
-  { id: 'finished-products', name: 'Finished Products', slug: 'finished-products' }
+  { id: 'team', name: 'Team', slug: 'team' },
+  // { id: 'manufacturing', name: 'Manufacturing', slug: 'manufacturing' },
+  // { id: 'finished-products', name: 'Finished Products', slug: 'finished-products' }
 ];
 
 export const NAVIGATION_MENU = [
@@ -109,9 +110,9 @@ export const NAVIGATION_MENU = [
       { name: 'All Products', path: '/products' },
       { name: 'FBB', path: '/products/fbb' },
       { name: 'SBS', path: '/products/sbs' },
-      { name: 'Virgin Craft Paper', path: '/products/virgin-paper' },
+      { name: 'Virgin Kraft Paper', path: '/products/virgin-paper' },
       { name: 'Duplex Board', path: '/products/duplex-board' },
-      { name: 'Kraft Paper', path: '/products/kraft-paper' },
+      { name: 'Recycled kraft paper', path: '/products/recycled-kraft-paper' },
       { name: 'Art Paper', path: '/products/art-paper' },
       { name: 'Kappa Board', path: '/products/kappa-board ' },
     ]

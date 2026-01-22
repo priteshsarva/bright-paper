@@ -4,13 +4,15 @@ import PageWrapper from '../components/PageWrapper';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { PRODUCT_CATEGORIES } from '../constants';
-import duplex from '../assets/images/duplexboard.jpg'
+import duplex from '../assets/images/1.jfif'
 import craftpaper from '../assets/images/craftpaper.jpg'
-import virginPaper from '../assets/images/1.jfif'
+import virginPaper from '../assets/images/Gemini_Generated_Image_6tlzvr6tlzvr6tlz.png'
 import SBS from '../assets/images/SBS.jfif'
 import FBB from '../assets/images/FBB.jfif'
 import artPaper from '../assets/images/artpaper.jpg'
-import kappaBoard from '../assets/images/kappaboard.jpg'
+import kappaBoard from '../assets/images/kappaboard-4.jpg'
+import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
+
 
 interface ProductData {
   [key: string]: {
@@ -53,9 +55,9 @@ const PRODUCT_DATA: ProductData = {
       'Industrial packaging'
     ],
   },
-  'kraft-paper': {
+  'recycled-kraft-paper': {
     img: craftpaper, // Keep variable name as is, or rename to kraftPaper if you update imports
-    name: 'Kraft Paper',
+    name: 'Recycled kraft paper',
     description: 'Durable kraft paper for various industrial applications',
     fullDescription: 'High-quality kraft paper known for its exceptional strength and versatility. Perfect for heavy-duty packaging and industrial applications where durability is paramount.',
     specifications: [
@@ -109,7 +111,7 @@ const PRODUCT_DATA: ProductData = {
       'Marketing collateral'
     ]
   },
-  'kappa-board': {  
+  'kappa-board': {
     img: kappaBoard,
     name: 'Kappa Board',
     description: 'Heavy-duty stiff board for rigid packaging',
@@ -139,7 +141,7 @@ const PRODUCT_DATA: ProductData = {
   },
   'virgin-paper': {
     img: virginPaper,
-    name: 'Virgin Paper',
+    name: 'Virgin Kraft Paper',
     description: 'High-grade virgin paper products',
     fullDescription: 'Premium virgin paper manufactured from 100% virgin pulp, offering superior quality and consistency for demanding applications.',
     specifications: [
@@ -246,22 +248,29 @@ export default function ProductDetail() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-primary-50 to-white py-16">
-        <PageWrapper>
-          <button
-            onClick={() => navigate('/products')}
-            className="flex items-center text-primary hover:text-primary-600 mb-6 transition-colors"
-          >
-            <ArrowLeft size={20} className="mr-2" />
-            Back to Products
-          </button>
-          <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
-            {productData.name}
-          </h1>
-          <p className="text-xl text-neutral-600">
-            {productData.description}
-          </p>
-        </PageWrapper>
+      <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
+        <img
+          src={backgroundImage}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-100 blur-[0px] z-0"
+        />
+        <div className="relative z-10">
+          <PageWrapper>
+            <button
+              onClick={() => navigate('/products')}
+              className="flex items-center text-primary hover:text-primary-600 mb-6 transition-colors"
+            >
+              <ArrowLeft size={20} className="mr-2" />
+              Back to Products
+            </button>
+            <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
+              {productData.name}
+            </h1>
+            <p className="text-xl text-black-600">
+              {productData.description}
+            </p>
+          </PageWrapper>
+        </div>
       </section>
 
       <PageWrapper>
@@ -269,7 +278,7 @@ export default function ProductDetail() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             <div className="aspect-square  rounded-2xl flex items-center justify-center">
               {/* <Package className="text-neutral-400" size={120} /> */}
-              <img src={productData.img} alt="" size={120} style={{width:"100%"}}/>
+              <img src={productData.img} alt="" size={120} style={{ width: "100%" }} />
 
             </div>
 
