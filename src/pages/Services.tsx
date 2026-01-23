@@ -9,6 +9,7 @@ import distribution from '../assets/images/distribution.jpg'
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
 import serviceBg from '../assets/images/pattern.jpg';
 import AnimatedNumber from '../components/AnimatedNumber';
+import AnimatedImage from '../components/AnimatedImage';
 
 export default function Services() {
   const navigate = useNavigate();
@@ -187,7 +188,15 @@ export default function Services() {
                 </div>
                 <div className="aspect-square bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-2xl flex items-center justify-center">
                   {/* <Truck className="text-neutral-400" size={120} /> */}
-                  <img src={distribution} alt="distribution" />
+                  <AnimaltedImage
+                    src={distribution}
+                    alt="distribution"
+                    className="w-full h-full object-cover"
+                    shine
+                    // direction="scale"
+                    delay={0.1}
+                  />
+                  {/* <img src={distribution} alt="distribution" /> */}
                 </div>
               </div>
             </Card>

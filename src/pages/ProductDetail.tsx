@@ -12,6 +12,7 @@ import FBB from '../assets/images/FBB.jfif'
 import artPaper from '../assets/images/artpaper.jpg'
 import kappaBoard from '../assets/images/kappaboard-4.jpg'
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
+import AnimatedImage from '../components/AnimatedImage';
 
 
 interface ProductData {
@@ -277,9 +278,15 @@ export default function ProductDetail() {
         <section className="py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             <div className="aspect-square  rounded-2xl flex items-center justify-center">
-              {/* <Package className="text-neutral-400" size={120} /> */}
-              <img src={productData.img} alt="" size={120} style={{ width: "100%" }} />
-
+              <AnimatedImage
+                src={productData.img}
+                alt={productData.name}
+                className="w-full h-full object-cover rounded-2xl"
+                shine
+                // direction="scale"
+                direction='up'
+                delay={0.1}
+              />
             </div>
 
             <div>

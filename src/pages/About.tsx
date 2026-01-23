@@ -8,6 +8,7 @@ import foundersImage from '../assets/images/founder.jpg';
 import missionBg from '../assets/images/mission-bg.jpg';
 import visionBg from '../assets/images/vision-bg.png';
 import AnimatedNumber from '../components/AnimatedNumber';
+import AnimatedImage from '../components/AnimatedImage';
 
 export default function About() {
   const milestones = [
@@ -42,10 +43,38 @@ export default function About() {
   ];
 
   const achievements = [
-    { icon: Award, value: `${new Date().getFullYear() - COMPANY_INFO.establishedYear}`, label: 'Years of Excellence' },
-    { icon: Users, value: '500+', label: 'Customers' },
-    { icon: CheckCircle, value: 'Cities', label: 'Across India' },
-    { icon: Target, value: '50,000 Tons', label: 'Annual Turnover' }
+    {
+      icon: Award,
+      label: 'Years of Excellence',
+      animate: {
+        end: new Date().getFullYear() - COMPANY_INFO.establishedYear,
+        suffix: ''
+      }
+    },
+    {
+      icon: Users,
+      label: 'Customers',
+      animate: {
+        end: 500,
+        suffix: '+'
+      }
+    },
+    {
+      icon: CheckCircle,
+      label: 'Across India',
+      animate: {
+        end: 28, // Using hardcoded value or calculate if possible, but 28 matches Metrics
+        suffix: ' Cities'
+      }
+    },
+    {
+      icon: Target,
+      label: 'Annual Turnover',
+      animate: {
+        end: 50000,
+        suffix: ' Tons'
+      }
+    }
   ];
 
   return (
@@ -89,12 +118,20 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="aspect-[3.2/4] bg-gradient-to-br from-neutral-200 to-neutral-300 rounded-2xl overflow-hidden">
-              <img
+            <div className="aspect-[3.2/4] rounded-2xl overflow-hidden">
+              <AnimatedImage
                 src={foundersImage}
                 alt="Founder"
                 className="w-full object-cover object-top" style={{ marginTop: '-30px' }}
+                shine
+                direction="scale"
+                delay={0.1}
               />
+              {/* <img
+                src={foundersImage}
+                alt="Founder"
+                className="w-full object-cover object-top" style={{ marginTop: '-30px' }}
+              /> */}
             </div>
           </div>
 
@@ -253,24 +290,12 @@ export default function About() {
                 <Card key={index} className=" bg-gradient-to-br from-[#F4FAF1] to-white text-center ">
                   <achievement.icon className="text-primary mx-auto mb-4" size={48} />
                   <div className="text-4xl font-bold text-[#5A8F2E] mb-2">
-                    {index === 0 ? (
-                      // Animated years
-                      <AnimatedNumber
-                        end={new Date().getFullYear() - COMPANY_INFO.establishedYear}
-                        duration={2500}
-                      />
-                    ) : index === 1 ? (
-                      // Animated customers
-                      <>
-                        <AnimatedNumber
-                          end={500}
-                          duration={2500}
-                        />
-                        <span>+</span>
-                      </>
-                    ) : (
-                      achievement.value
-                    )}
+                    <AnimatedNumber
+                      end={achievement.animate.end}
+                      duration={2500}
+                      suffix={achievement.animate.suffix}
+                      separator=","
+                    />
                   </div>
                   <div className="text-neutral-600">{achievement.label}</div>
                 </Card>

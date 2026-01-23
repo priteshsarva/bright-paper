@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 interface UseCountUpOptions {
     end: number;
@@ -25,12 +25,12 @@ export function useCountUp(
     } = options;
 
     const [count, setCount] = useState(start);
-    const [hasStarted, setHasStarted] = useState(false);
+    const hasStartedRef = useRef(false);
 
     useEffect(() => {
-        if (!shouldStart || hasStarted) return;
+        if (!shouldStart || hasStartedRef.current) return;
 
-        setHasStarted(true);
+        hasStartedRef.current = true;
         const startTime = Date.now();
         const range = end - start;
 
@@ -53,7 +53,7 @@ export function useCountUp(
         }, 16); // ~60fps
 
         return () => clearInterval(timer);
-    }, [shouldStart, end, start, duration, hasStarted]);
+    }, [shouldStart, end, start, duration]);
 
     // Format the number
     const formatNumber = (num: number): string => {

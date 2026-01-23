@@ -2,6 +2,7 @@ import { Quote } from 'lucide-react';
 import Card from '../Card';
 import { COMPANY_INFO } from '../../constants';
 import MDSIR from '../../assets/images/1520152901291.jpg'
+import AnimatedImage from '../AnimatedImage';
 
 export default function MDMessage() {
   return (
@@ -11,14 +12,22 @@ export default function MDMessage() {
           <div>
             <div className="aspect-square from-neutral-200 to-neutral-300 rounded-2xl flex items-center justify-center" >
 
-              <img src={MDSIR} alt="" style={{
+              <AnimatedImage
+                src={MDSIR}
+                alt=""
+                className="w-full h-full object-cover "
+                shine
+                direction="scale"
+                delay={0.1}
+              />
+              {/* <img src={MDSIR} alt="" style={{
                 width: "100%",
                 // height: "100%",
                 objectFit: "cover",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
-              }} />
+              }} /> */}
 
               {/* <div className="text-center">
                 <div className="w-32 h-32 bg-neutral-400 rounded-full mx-auto mb-4"></div>

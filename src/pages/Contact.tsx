@@ -142,8 +142,12 @@ export default function Contact() {
             </Card>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" >
+            <div style={{
+              backgroundColor: '#F4FAF1',
+              padding: '1rem',
+              borderRadius: '10px'
+            }}>
               <h2 className="text-3xl font-bold text-neutral-900 mb-6">Send Us an Inquiry</h2>
               <p className="text-neutral-600 mb-8">
                 Fill out the form below and our team will get back to you promptly with the information you need.

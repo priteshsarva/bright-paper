@@ -31,6 +31,8 @@ import img7 from '../assets/images/gallery/Gemini_Generated_Image_ft9klsft9klsft
 // import img25 from '../assets/images/gallery/25.jpeg';
 // import img26 from '../assets/images/gallery/16.jpeg';
 
+import AnimatedImage from '../components/AnimatedImage';
+
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   // const [lightboxImage, setLightboxImage] = useState<string | null>(null);
@@ -107,7 +109,7 @@ export default function Gallery() {
 
           {filteredImages.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredImages.map((image) => (
+              {filteredImages.map((image, index) => (
                 <div
                   key={image.id}
                   className="group relative aspect-video bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-lg overflow-hidden cursor-pointer shadow-soft hover:shadow-medium transition-all"
@@ -115,7 +117,15 @@ export default function Gallery() {
                   onClick={() => setLightboxImage(image)}
                 >
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <img src={image.url} alt={image.title} className="w-full h-full object-cover" />
+                    <AnimatedImage
+                      src={image.url}
+                      alt={image.title}
+                      className="w-full h-full object-cover"
+                      containerClassName="w-full h-full"
+                      shine
+                      delay={index * 0.05}
+                      threshold={0.1}
+                    />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

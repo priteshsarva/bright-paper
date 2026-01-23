@@ -4,6 +4,7 @@ import Card from '../Card';
 import Button from '../Button';
 import SectionHeader from '../SectionHeader';
 import { PRODUCT_CATEGORIES } from '../../constants';
+import AnimatedImage from '../AnimatedImage';
 
 export default function FeaturedProducts() {
   const navigate = useNavigate();
@@ -18,11 +19,18 @@ export default function FeaturedProducts() {
         />
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-12">
-          {featuredProducts.map((product) => (
+          {featuredProducts.map((product, index) => (
             <Card key={product.id} hover className="group cursor-pointer" onClick={() => navigate(`/products/${product.slug}`)}>
-              <div className="aspect-video  rounded-lg mb-6 flex items-center justify-center">
-                {/* <Package className="text-neutral-400 group-hover:text-primary transition-colors" size={64} /> */}
-                <img src={product.img} alt="" style={{width:"100%"}}/>
+              <div className="aspect-square rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+                <AnimatedImage
+                  src={product.img}
+                  alt={product.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  containerClassName="w-full h-full"
+                  shine
+                  direction="scale"
+                  delay={index * 0.1}
+                />
               </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors">
                 {product.name}
