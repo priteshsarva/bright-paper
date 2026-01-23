@@ -21,10 +21,12 @@ export const COMPANY_INFO = {
   phone: '+916357012345',
   whatsapp: '916357012345',
   socialLinks: {
-    // Twitter: 'https://twitter.com/yourprofile',
     instagram: 'https://www.instagram.com/brightpaper_company',
-    // linkedin: 'https://linkedin.com/in/yourprofile',
-    github: '',
+    facebook: 'https://www.facebook.com/people/Asawa-Arun/61586704033137/',
+    telegram: 'https://t.me/+916357012323',
+    whatsapp: 'https://wa.me/916357012345?text=Hello%20Bright%20Paper',
+    // linkedin: 'https://www.linkedin.com/in/yourprofile',
+    // youtube: 'https://www.youtube.com/yourprofile',
   },
   address: {
     street: 'Plot no 128/129, 2nd floor, Laxminarayan industrial estate, BRC compound, Opp Daksheshwar mahadev temple, Udhana-pandesara',

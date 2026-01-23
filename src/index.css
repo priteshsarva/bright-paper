@@ -5,6 +5,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @media (pointer: fine) {
+        * {
+            cursor: none !important;
+        }
+
+        /* Restore cursor for map or iframes if needed, but 'none !important' is aggressive. 
+           Depending on user preference, we might want to just hide it on body and let elements inherit.
+           However, to ensure the custom cursor is the ONLY cursor, * { cursor: none } is best, 
+           EXCEPT for the custom cursor itself which is pointer-events-none.
+        */
+    }
+}
+
 /* Loader Animations */
 @layer utilities {
 

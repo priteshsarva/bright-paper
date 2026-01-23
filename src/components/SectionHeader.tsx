@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import TextReveal from './TextReveal';
 
 interface SectionHeaderProps {
   title: string;
@@ -19,7 +20,7 @@ export default function SectionHeader({
   return (
     <div className={`flex flex-col ${containerClass} mb-12`}>
       <h2 className={`text-4xl md:text-5xl font-bold text-neutral-900 mb-4 ${alignmentClass}`}>
-        {title}
+        <TextReveal text={title} />
       </h2>
       {subtitle && (
         <p className={`text-lg md:text-xl text-black-600 max-w-3xl ${alignmentClass}`}>

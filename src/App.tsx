@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import CTASection from './components/home/CTASection';
 import ScrollToTop from './components/ScrollToTop';
 import Loader from './components/Loader';
+import CustomCursor from './components/CustomCursor';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   return (
     <Router>
       <Loader />
+      <CustomCursor />
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-white">
         <Header />
