@@ -188,7 +188,7 @@ export default function Services() {
                 </div>
                 <div className="aspect-square bg-gradient-to-br from-neutral-100 to-neutral-200 rounded-2xl flex items-center justify-center">
                   {/* <Truck className="text-neutral-400" size={120} /> */}
-                  <AnimaltedImage
+                  <AnimatedImage
                     src={distribution}
                     alt="distribution"
                     className="w-full h-full object-cover"
