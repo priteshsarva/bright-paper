@@ -1,3 +1,59 @@
+/* Lenis Smooth Scroll */
+@import 'lenis/dist/lenis.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Loader Animations */
+@layer utilities {
+
+    /* Fade In Up Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Reverse Spin Animation */
+    @keyframes spinReverse {
+        from {
+            transform: rotate(360deg);
+        }
+
+        to {
+            transform: rotate(0deg);
+        }
+    }
+
+    .animate-spin-reverse {
+        animation: spinReverse 1s linear infinite;
+    }
+
+    /* Animation Delays */
+    .animation-delay-0 {
+        animation-delay: 0ms;
+    }
+
+    .animation-delay-200 {
+        animation-delay: 200ms;
+    }
+
+    .animation-delay-400 {
+        animation-delay: 400ms;
+    }
+
+    .animation-delay-600 {
+        animation-delay: 600ms;
+    }
+}

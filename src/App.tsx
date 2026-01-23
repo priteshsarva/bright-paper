@@ -10,10 +10,16 @@ import Services from './pages/Services';
 import Contact from './pages/Contact';
 import CTASection from './components/home/CTASection';
 import ScrollToTop from './components/ScrollToTop';
+import Loader from './components/Loader';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 function App() {
+  // Initialize smooth scrolling
+  useSmoothScroll();
+
   return (
     <Router>
+      <Loader />
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-white">
         <Header />

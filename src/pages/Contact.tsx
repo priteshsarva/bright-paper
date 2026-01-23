@@ -106,9 +106,9 @@ export default function Contact() {
       <PageWrapper>
         <section className="py-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            <Card hover>
+            <Card hover className="bg-[#F4FAF1]">
               <MapPin className="text-primary mb-4" size={40} />
-              <h3 className="text-xl font-bold text-neutral-900 mb-3">Address</h3>
+              <h3 className="text-xl font-bold text-[#5A8F2E] mb-3">Address</h3>
               <p className="text-neutral-600">
                 {COMPANY_INFO.address.street}<br />
                 {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state}<br />
@@ -116,9 +116,9 @@ export default function Contact() {
               </p>
             </Card>
 
-            <Card hover>
+            <Card hover className="bg-[#F4FAF1]">
               <Mail className="text-primary mb-4" size={40} />
-              <h3 className="text-xl font-bold text-neutral-900 mb-3">Email</h3>
+              <h3 className="text-xl font-bold text-[#5A8F2E] mb-3">Email</h3>
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
                 className="text-neutral-600 hover:text-primary transition-colors"
@@ -130,9 +130,9 @@ export default function Contact() {
               </p>
             </Card>
 
-            <Card hover>
+            <Card hover className="bg-[#F4FAF1]">
               <Phone className="text-primary mb-4" size={40} />
-              <h3 className="text-xl font-bold text-neutral-900 mb-3">Phone</h3>
+              <h3 className="text-xl font-bold text-[#5A8F2E] mb-3">Phone</h3>
               <p className="text-neutral-600 mb-2">
                 {COMPANY_INFO.phone}
               </p>

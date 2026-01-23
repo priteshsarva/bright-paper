@@ -1,6 +1,7 @@
 import { TrendingUp, Users, MapPin, Award } from 'lucide-react';
 import Card from '../Card';
 import { COMPANY_INFO } from '../../constants';
+import AnimatedNumber from '../AnimatedNumber';
 
 export default function MetricsSection() {
   const metrics = [
@@ -35,10 +36,21 @@ export default function MetricsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {metrics.map((metric, index) => (
-            <Card key={index} hover className="text-center">
+            <Card key={index} hover className="text-center bg-white">
               <metric.icon className={`${metric.color} mx-auto mb-4`} size={48} />
               <div className="text-4xl font-bold text-neutral-900 mb-2">
-                {metric.value}
+                {index === 3 ? (
+                  // Animated number for years
+                  <>
+                    <AnimatedNumber
+                      end={new Date().getFullYear() - COMPANY_INFO.establishedYear}
+                      duration={2500}
+                    />
+                    <span>+</span>
+                  </>
+                ) : (
+                  metric.value
+                )}
               </div>
               <div className="text-neutral-600">{metric.label}</div>
             </Card>

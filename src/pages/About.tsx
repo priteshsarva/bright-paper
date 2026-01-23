@@ -7,6 +7,7 @@ import { COMPANY_INFO } from '../constants';
 import foundersImage from '../assets/images/founder.jpg';
 import missionBg from '../assets/images/mission-bg.jpg';
 import visionBg from '../assets/images/vision-bg.png';
+import AnimatedNumber from '../components/AnimatedNumber';
 
 export default function About() {
   const milestones = [
@@ -98,15 +99,15 @@ export default function About() {
           </div>
 
 
-          <div className="mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-12 text-center">
+          <div className="mb-20 ">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 text-center ">
               Our Core Values
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((value, index) => (
-                <Card key={index} hover className="text-center">
+                <Card key={index} hover className=" bg-gradient-to-br from-[#F4FAF1] to-white text-center">
                   <value.icon className="text-primary mx-auto mb-4" size={48} />
-                  <h3 className="text-xl font-bold text-neutral-900 mb-3">{value.title}</h3>
+                  <h3 className="text-xl font-bold text-[#5A8F2E] mb-3">{value.title}</h3>
                   <p className="text-neutral-600">{value.description}</p>
                 </Card>
               ))}
@@ -116,7 +117,7 @@ export default function About() {
 
 
           <div className="mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
               Our Journey
             </h2>
             <div className="relative">
@@ -244,14 +245,33 @@ export default function About() {
 
 
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-12 text-center " >
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 text-center " >
               Our Achievements
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {achievements.map((achievement, index) => (
-                <Card key={index} className="text-center bg-gradient-to-br from-neutral-50 to-white">
+                <Card key={index} className=" bg-gradient-to-br from-[#F4FAF1] to-white text-center ">
                   <achievement.icon className="text-primary mx-auto mb-4" size={48} />
-                  <div className="text-4xl font-bold text-neutral-900 mb-2">{achievement.value}</div>
+                  <div className="text-4xl font-bold text-[#5A8F2E] mb-2">
+                    {index === 0 ? (
+                      // Animated years
+                      <AnimatedNumber
+                        end={new Date().getFullYear() - COMPANY_INFO.establishedYear}
+                        duration={2500}
+                      />
+                    ) : index === 1 ? (
+                      // Animated customers
+                      <>
+                        <AnimatedNumber
+                          end={500}
+                          duration={2500}
+                        />
+                        <span>+</span>
+                      </>
+                    ) : (
+                      achievement.value
+                    )}
+                  </div>
                   <div className="text-neutral-600">{achievement.label}</div>
                 </Card>
               ))}

@@ -8,6 +8,7 @@ import { COMPANY_INFO } from '../constants';
 import distribution from '../assets/images/distribution.jpg'
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
 import serviceBg from '../assets/images/pattern.jpg';
+import AnimatedNumber from '../components/AnimatedNumber';
 
 export default function Services() {
   const navigate = useNavigate();
@@ -142,7 +143,7 @@ export default function Services() {
                       key={idx}
                       className="text-sm text-[#374151] flex items-center"
                     >
-                      <span className="w-2 h-2 bg-[#7CB342] rounded-full mr-3"></span>
+                      <span className="w-2 h-2 bg-[#5A8F2E] rounded-full mr-3"></span>
                       {feature}
                     </li>
                   ))}
@@ -153,7 +154,7 @@ export default function Services() {
           </div>
 
           <div className="mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 text-center">
               Nationwide Distribution Network
             </h2>
             <Card className="bg-gradient-to-br from-secondary-50 to-white" padding="lg">
@@ -176,7 +177,9 @@ export default function Services() {
                     <div className="flex items-center">
                       <Users className="text-primary mr-3" size={24} />
                       <div>
-                        <div className="font-semibold text-neutral-900">{COMPANY_INFO.dealerCount} Customers</div>
+                        <div className="font-semibold text-neutral-900">
+                          <AnimatedNumber end={500} duration={2500} />+ Customers
+                        </div>
                         <div className="text-sm text-neutral-600">Trusted nationwide network</div>
                       </div>
                     </div>
@@ -191,24 +194,25 @@ export default function Services() {
           </div>
 
           <div className="mb-20" style={{
-            backgroundImage: `url(${serviceBg})`,
+            // backgroundImage: `url(${serviceBg})`,
+            // backgroundColor: "#F4FAF1",
             backgroundRepeat: "repeat",
             // backgroundSize: "auto",
             backgroundSize: "750px 750px",
           }}>
-            <h2 className="text-3xl md:text-4xl font-bold  mb-12 text-center text-[#F36B2C]">
+            <h2 className="text-3xl md:text-4xl font-bold  mb-12 text-center text-primary">
               Industries & Applications
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {industries.map((industry, index) => (
-                <Card key={index} className="text-center bg-white">
-                  <p className="font-semibold   text-[#5a8f2e]">{industry}</p>
+                <Card key={index} className="text-center bg-[#F4FAF1]">
+                  <p className="font-semibold   text-[#5A8F2E]">{industry}</p>
                 </Card>
               ))}
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-primary to-primary-600 rounded-2xl p-8 md:p-12 text-center text-white">
+          <div className="bg-gradient-to-br from-[#f4f6f1] to-[#ffffff] rounded-2xl p-8 md:p-12 text-center text-black">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Become a Partner
             </h2>
@@ -217,9 +221,9 @@ export default function Services() {
             </p>
             <Button
               size="lg"
-              variant="secondary"
+              variant="primary"
               onClick={() => navigate('/contact')}
-              className="bg-white text-black hover:bg-neutral-100 hover:text-white shadow-lg"
+              className=" text-black hover:bg-neutral-100 hover:text-white shadow-lg"
             >
               Apply for Partnership
             </Button>
