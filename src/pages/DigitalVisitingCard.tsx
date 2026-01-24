@@ -13,13 +13,12 @@ import facebookImg from '../assets/images/facebook.png';
 import linkedinImg from '../assets/images/linkedin.png';
 import telegramImg from '../assets/images/telegram.png';
 
-
-
 export default function DigitalVisitingCard() {
     const [showQR, setShowQR] = useState(false);
     const mdName = "Arun Asawa";
     const designation = "Managing Director";
     const gstNo = "24AFBPA0125Q1ZV";
+
 
     const handleSaveContact = () => {
         const vcard = `BEGIN:VCARD
@@ -66,47 +65,60 @@ END:VCARD`;
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{
+                    duration: 0.6,
+                    ease: "easeOut",
+                    delay: 2.0
+                }}
                 className="max-w-md w-full bg-gradient-to-br from-primary/30 via-white via-50% to-secondary/30 rounded-[2rem] shadow-2xl overflow-hidden relative"
             >
                 {/* Background Accent */}
                 <div className="absolute top-0 left-0 w-full h-32 z-0" />
 
+
+
                 <div className="relative z-10 p-8 flex flex-col items-center">
                     {/* Logo Section */}
                     <motion.div
-                        initial={{ scale: 0.8 }}
-                        animate={{ scale: 1 }}
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 2.2, type: "spring", stiffness: 100 }}
                         className="mt-4 h-48 flex items-center justify-center"
                     >
-                        <img src={logo} alt={COMPANY_INFO.name} className="max-w-full max-h-full object-contain" />
+                        <img src={logo} alt={COMPANY_INFO.name} className="max-w-full max-h-full object-contain drop-shadow-xl" />
                     </motion.div>
+
+
 
                     {/* Name & Designation Box */}
                     <motion.div
-                        initial={{ y: 10, opacity: 0 }}
+                        initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="w-full bg-white border-gray-100 shadow-md rounded-2xl py-6 mb-3 text-center"
+                        transition={{ delay: 2.3 }}
+                        className="w-full bg-white/80 backdrop-blur-sm border border-white/50 shadow-lg rounded-2xl py-6 mb-3 text-center"
                     >
                         <h1 className="text-3xl font-bold text-gray-900 mb-1">{mdName}</h1>
-                        <p className="text-gray-500 font-bold text-sm">{designation}</p>
+                        <p className="text-gray-500 font-bold text-sm tracking-widest uppercase">{designation}</p>
                     </motion.div>
+
+
 
                     {/* Tagline Box */}
                     <motion.div
-                        initial={{ y: 10, opacity: 0 }}
+                        initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 2.4 }}
                         className="mb-4 w-full"
                     >
-                        <div className="border border-red-100 rounded-xl py-2 px-4 text-center">
-                            <p className="text-gray-500 font-bold text-[14px]  tracking-tight">
+                        <div className="bg-white/40 backdrop-blur-sm border border-red-100/50 rounded-xl py-2 px-4 text-center">
+                            <p className="text-gray-500 font-bold text-[14px] leading-relaxed">
                                 {COMPANY_INFO.tagline2}<br />
                                 {COMPANY_INFO.tagline3}
                             </p>
                         </div>
                     </motion.div>
+
+
 
                     {/* Quick Action Icons */}
                     <div className="flex justify-between w-full mb-5">
@@ -122,16 +134,28 @@ END:VCARD`;
                                 href={action.href}
                                 target={action.icon === websiteImg || action.icon === locationImg ? "_blank" : "_self"}
                                 rel="noopener noreferrer"
-                                initial={{ scale: 0, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                transition={{ delay: 0.4 + i * 0.1 }}
-                                whileTap={{ scale: 0.9 }}
-                                className="w-14 h-14 flex items-center justify-center bg-white shadow-soft border border-gray-100 rounded-2xl p-2 overflow-hidden"
+                                initial={{ scale: 0, opacity: 0, y: 15 }}
+                                animate={{ scale: 1, opacity: 1, y: 0 }}
+                                transition={{
+                                    delay: 2.5 + i * 0.05,
+                                    type: "spring",
+                                    stiffness: 260,
+                                    damping: 20
+                                }}
+                                whileHover={{
+                                    scale: 1.1,
+                                    y: -4,
+                                    transition: { duration: 0.2 }
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                                className="w-14 h-14 flex items-center justify-center bg-white shadow-soft border border-gray-100 rounded-2xl p-2 overflow-hidden hover:shadow-xl transition-shadow"
                             >
                                 <img src={action.icon} alt="icon" className="w-full h-full object-contain" />
                             </motion.a>
+
                         ))}
                     </div>
+
 
                     {/* Primary Action Buttons */}
                     <div className="flex flex-col gap-4 w-full mb-5">
@@ -139,12 +163,12 @@ END:VCARD`;
                             onClick={handleSaveContact}
                             initial={{ x: -20, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 0.9 }}
+                            transition={{ delay: 2.8, type: "spring", stiffness: 100 }}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-primary/80 py-4 rounded-2xl flex items-center justify-center gap-2 text-white font-bold shadow-lg shadow-red-100"
+                            className="w-full bg-primary py-4 rounded-2xl flex items-center justify-center gap-2 text-white font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow relative overflow-hidden group"
                         >
-                            <div className="bg-white/20 p-1 rounded-full">
+                            <div className="bg-white/20 p-1 rounded-full group-hover:rotate-12 transition-transform">
                                 <User size={18} />
                             </div>
                             Save Contact
@@ -154,15 +178,17 @@ END:VCARD`;
                             onClick={handleShare}
                             initial={{ x: 20, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 1.0 }}
+                            transition={{ delay: 2.9, type: "spring", stiffness: 100 }}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-white border border-gray-200 py-4 rounded-2xl flex items-center justify-center gap-2 text-gray-900 font-bold shadow-md"
+                            className="w-full bg-white border border-gray-200 py-4 rounded-2xl flex items-center justify-center gap-2 text-gray-900 font-bold shadow-md hover:shadow-lg transition-shadow"
                         >
                             <Share2 size={18} className="text-gray-400" />
                             Show QR / Share
                         </motion.button>
                     </div>
+
+
 
                     {/* Social Media Icons */}
                     <div className="flex justify-center gap-4 mb-3">
@@ -177,23 +203,28 @@ END:VCARD`;
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                initial={{ y: 20, opacity: 0 }}
+                                initial={{ y: 15, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 1.1 + i * 0.1 }}
-                                whileHover={{ y: -3 }}
-                                whileTap={{ scale: 0.9 }}
-                                className="w-14 h-14 flex items-center justify-center bg-white shadow-soft rounded-2xl border border-gray-100 p-2 overflow-hidden"
+                                transition={{ delay: 3.0 + i * 0.1 }}
+                                whileHover={{
+                                    y: -4,
+                                    scale: 1.1,
+                                }}
+                                whileTap={{ scale: 0.95 }}
+                                className="w-14 h-14 flex items-center justify-center bg-white shadow-soft rounded-2xl border border-gray-100 p-2 overflow-hidden hover:shadow-xl transition-all"
                             >
                                 <img src={social.icon} alt="social" className="w-full h-full object-contain" />
                             </motion.a>
                         ))}
                     </div>
 
+
+
                     {/* GST info */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 1.5 }}
+                        transition={{ delay: 3.5 }}
                         className="text-center"
                     >
                         <p className="text-[12px] text-gray-500 font-bold tracking-widest uppercase">

@@ -109,11 +109,16 @@ export default function Contact() {
             <Card hover className="bg-[#F4FAF1]">
               <MapPin className="text-primary mb-4" size={40} />
               <h3 className="text-xl font-bold text-[#5A8F2E] mb-3">Address</h3>
-              <p className="text-neutral-600">
+              <a
+                href={COMPANY_INFO.address.mapLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-600 hover:text-primary transition-colors block"
+              >
                 {COMPANY_INFO.address.street}<br />
                 {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state}<br />
                 {COMPANY_INFO.address.country} - {COMPANY_INFO.address.pincode}
-              </p>
+              </a>
             </Card>
 
             <Card hover className="bg-[#F4FAF1]">
@@ -133,12 +138,20 @@ export default function Contact() {
             <Card hover className="bg-[#F4FAF1]">
               <Phone className="text-primary mb-4" size={40} />
               <h3 className="text-xl font-bold text-[#5A8F2E] mb-3">Phone</h3>
-              <p className="text-neutral-600 mb-2">
+              <a
+                href={`tel:${COMPANY_INFO.phone}`}
+                className="text-neutral-600 hover:text-primary transition-colors block mb-2"
+              >
                 {COMPANY_INFO.phone}
-              </p>
-              <p className="text-sm text-neutral-500">
+              </a>
+              <a
+                href={`https://wa.me/${COMPANY_INFO.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-neutral-500 hover:text-primary transition-colors block"
+              >
                 WhatsApp: +{COMPANY_INFO.whatsapp}
-              </p>
+              </a>
             </Card>
           </div>
 
@@ -289,9 +302,14 @@ export default function Contact() {
                   >
                     {COMPANY_INFO.email}
                   </a>
-                  <p className="text-neutral-700">
+                  <a
+                    href={`https://wa.me/${COMPANY_INFO.whatsapp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-neutral-700 hover:text-primary font-semibold"
+                  >
                     WhatsApp: +{COMPANY_INFO.whatsapp}
-                  </p>
+                  </a>
                 </div>
               </Card>
 
