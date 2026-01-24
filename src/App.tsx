@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import CTASection from './components/home/CTASection';
 import ScrollToTop from './components/ScrollToTop';
 import Loader from './components/Loader';
+import DigitalVisitingCard from './pages/DigitalVisitingCard';
 import CustomCursor from './components/CustomCursor';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/card" element={<DigitalVisitingCard />} />
           </Routes>
         </main>
         <CTASection />
