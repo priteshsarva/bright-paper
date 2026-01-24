@@ -12,20 +12,23 @@ import VIRGINKRAFT from '../assets/images/VIRGIN KRAFT.jpg'
 
 export const COMPANY_INFO = {
   name: 'Bright Paper',
-  tagline: 'Your Trusted Partner in Quality Paper Products',
+  tagline: `Premium Paper Products For Sustainable Packaging`,
+  tagline2: `Premium Paper Products For`,
+  tagline3: `Sustainable Packaging`,
+
   establishedYear: 2007,
   citiesServed: 28,
   dealerCount: '500+',
   turnover: '50,000 Tons',
-  email: 'mail-info@brightpaper.co.in',
-  phone: '+916357012345',
-  whatsapp: '916357012345',
+  email: 'info@brightpaper.co.in',
+  phone: '+916357012323',
+  whatsapp: '916357012323',
   socialLinks: {
     instagram: 'https://www.instagram.com/brightpaper_company',
     facebook: 'https://www.facebook.com/people/Asawa-Arun/61586704033137/',
     telegram: 'https://t.me/+916357012323',
-    whatsapp: 'https://wa.me/916357012345?text=Hello%20Bright%20Paper',
-    // linkedin: 'https://www.linkedin.com/in/yourprofile',
+    whatsapp: 'https://wa.me/916357012323?text=Hello%20Arun%20Asawa',
+    linkedin: '/',
     // youtube: 'https://www.youtube.com/yourprofile',
   },
   address: {

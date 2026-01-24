@@ -1,46 +1,25 @@
-import { motion } from 'framer-motion';
-import { Phone, MapPin, Mail, Globe, User, Share2, Instagram, Facebook, Linkedin } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { User, Share2 } from 'lucide-react';
 import { COMPANY_INFO } from '../constants';
 import logo from '../assets/images/logo.png';
+import callImg from '../assets/images/call.png';
+import locationImg from '../assets/images/location.png';
+import mailImg from '../assets/images/mail.png';
+import websiteImg from '../assets/images/website.png';
+import whatsappImg from '../assets/images/whatsapp.png';
+import instagramImg from '../assets/images/instagram.png';
+import facebookImg from '../assets/images/facebook.png';
+import linkedinImg from '../assets/images/linkedin.png';
+import telegramImg from '../assets/images/telegram.png';
 
-// Custom Icons to match lucide-react style
-const Telegram = ({ className, size = 24 }: { className?: string, size?: number }) => (
-    <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-    >
-        <path d="m22 2-7 20-4-9-9-4Z" />
-        <path d="M22 2 11 13" />
-    </svg>
-);
 
-const WhatsApp = ({ className, size = 24 }: { className?: string, size?: number }) => (
-    <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-    >
-        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-    </svg>
-);
 
 export default function DigitalVisitingCard() {
-    const mdName = "ShreeArun ShriGopal Asawa";
+    const [showQR, setShowQR] = useState(false);
+    const mdName = "Arun Asawa";
     const designation = "Managing Director";
-    const gstNo = "24ADKPN2120R1ZC"; // Using the one from the provided image
+    const gstNo = "24AFBPA0125Q1ZV";
 
     const handleSaveContact = () => {
         const vcard = `BEGIN:VCARD
@@ -65,6 +44,10 @@ END:VCARD`;
     };
 
     const handleShare = () => {
+        setShowQR(true);
+    };
+
+    const handleNativeShare = () => {
         if (navigator.share) {
             navigator.share({
                 title: `${mdName} - ${COMPANY_INFO.name}`,
@@ -76,23 +59,25 @@ END:VCARD`;
         }
     };
 
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(window.location.href)}`;
+
     return (
         <div className="min-h-screen bg-gray-100 py-10 px-4 flex items-center justify-center">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="max-w-md w-full bg-white rounded-[2rem] shadow-2xl overflow-hidden relative"
+                className="max-w-md w-full bg-gradient-to-br from-primary/30 via-white via-50% to-secondary/30 rounded-[2rem] shadow-2xl overflow-hidden relative"
             >
                 {/* Background Accent */}
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-br from-primary/10 to-transparent z-0" />
+                <div className="absolute top-0 left-0 w-full h-32 z-0" />
 
                 <div className="relative z-10 p-8 flex flex-col items-center">
                     {/* Logo Section */}
                     <motion.div
                         initial={{ scale: 0.8 }}
                         animate={{ scale: 1 }}
-                        className="mb-8 w-48 h-24 flex items-center justify-center"
+                        className="mt-4 h-48 flex items-center justify-center"
                     >
                         <img src={logo} alt={COMPANY_INFO.name} className="max-w-full max-h-full object-contain" />
                     </motion.div>
@@ -102,9 +87,9 @@ END:VCARD`;
                         initial={{ y: 10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="w-full bg-white border border-gray-100 shadow-md rounded-2xl py-6 mb-6 text-center"
+                        className="w-full bg-white border-gray-100 shadow-md rounded-2xl py-6 mb-3 text-center"
                     >
-                        <h1 className="text-2xl font-black text-gray-900 mb-1">{mdName}</h1>
+                        <h1 className="text-3xl font-bold text-gray-900 mb-1">{mdName}</h1>
                         <p className="text-gray-500 font-bold text-sm">{designation}</p>
                     </motion.div>
 
@@ -113,42 +98,43 @@ END:VCARD`;
                         initial={{ y: 10, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3 }}
-                        className="mb-8 w-full"
+                        className="mb-4 w-full"
                     >
                         <div className="border border-red-100 rounded-xl py-2 px-4 text-center">
-                            <p className="text-gray-700 font-bold text-sm">
-                                Bright Paper &mdash; Quality Products
+                            <p className="text-gray-500 font-bold text-[14px]  tracking-tight">
+                                {COMPANY_INFO.tagline2}<br />
+                                {COMPANY_INFO.tagline3}
                             </p>
                         </div>
                     </motion.div>
 
                     {/* Quick Action Icons */}
-                    <div className="flex justify-between w-full mb-10">
+                    <div className="flex justify-between w-full mb-5">
                         {[
-                            { icon: Phone, href: `tel:${COMPANY_INFO.phone}`, color: 'text-green-500' },
-                            { icon: MapPin, href: COMPANY_INFO.address.mapLink, color: 'text-orange-500' },
-                            { icon: WhatsApp, href: COMPANY_INFO.socialLinks.whatsapp, color: 'text-green-600' },
-                            { icon: Mail, href: `mailto:${COMPANY_INFO.email}`, color: 'text-red-500' },
-                            { icon: Globe, href: '/', color: 'text-blue-500' },
+                            { icon: callImg, href: `tel:${COMPANY_INFO.phone}` },
+                            { icon: locationImg, href: COMPANY_INFO.address.mapLink },
+                            { icon: whatsappImg, href: COMPANY_INFO.socialLinks.whatsapp },
+                            { icon: mailImg, href: `mailto:${COMPANY_INFO.email}` },
+                            { icon: websiteImg, href: '/' },
                         ].map((action, i) => (
                             <motion.a
                                 key={i}
                                 href={action.href}
-                                target={action.icon === Globe || action.icon === MapPin ? "_blank" : "_self"}
+                                target={action.icon === websiteImg || action.icon === locationImg ? "_blank" : "_self"}
                                 rel="noopener noreferrer"
                                 initial={{ scale: 0, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 transition={{ delay: 0.4 + i * 0.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="w-14 h-14 flex items-center justify-center bg-white shadow-soft border border-gray-100 rounded-2xl"
+                                className="w-14 h-14 flex items-center justify-center bg-white shadow-soft border border-gray-100 rounded-2xl p-2 overflow-hidden"
                             >
-                                <action.icon className={action.color} size={28} />
+                                <img src={action.icon} alt="icon" className="w-full h-full object-contain" />
                             </motion.a>
                         ))}
                     </div>
 
                     {/* Primary Action Buttons */}
-                    <div className="flex flex-col gap-4 w-full mb-10">
+                    <div className="flex flex-col gap-4 w-full mb-5">
                         <motion.button
                             onClick={handleSaveContact}
                             initial={{ x: -20, opacity: 0 }}
@@ -156,7 +142,7 @@ END:VCARD`;
                             transition={{ delay: 0.9 }}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-red-600 py-4 rounded-2xl flex items-center justify-center gap-2 text-white font-bold shadow-lg shadow-red-100"
+                            className="w-full bg-primary/80 py-4 rounded-2xl flex items-center justify-center gap-2 text-white font-bold shadow-lg shadow-red-100"
                         >
                             <div className="bg-white/20 p-1 rounded-full">
                                 <User size={18} />
@@ -179,12 +165,12 @@ END:VCARD`;
                     </div>
 
                     {/* Social Media Icons */}
-                    <div className="flex justify-center gap-4 mb-6">
+                    <div className="flex justify-center gap-4 mb-3">
                         {[
-                            { icon: Instagram, href: COMPANY_INFO.socialLinks.instagram, color: 'text-pink-600' },
-                            { icon: Facebook, href: COMPANY_INFO.socialLinks.facebook, color: 'text-blue-600' },
-                            { icon: Linkedin, href: (COMPANY_INFO.socialLinks as any).linkedin || '#', color: 'text-blue-700' },
-                            { icon: Telegram, href: COMPANY_INFO.socialLinks.telegram, color: 'text-sky-500' },
+                            { icon: instagramImg, href: COMPANY_INFO.socialLinks.instagram },
+                            { icon: facebookImg, href: COMPANY_INFO.socialLinks.facebook },
+                            { icon: linkedinImg, href: COMPANY_INFO.socialLinks.linkedin || '#' },
+                            { icon: telegramImg, href: COMPANY_INFO.socialLinks.telegram },
                         ].map((social, i) => (
                             <motion.a
                                 key={i}
@@ -196,9 +182,9 @@ END:VCARD`;
                                 transition={{ delay: 1.1 + i * 0.1 }}
                                 whileHover={{ y: -3 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="w-14 h-14 flex items-center justify-center bg-white shadow-soft rounded-2xl border border-gray-100"
+                                className="w-14 h-14 flex items-center justify-center bg-white shadow-soft rounded-2xl border border-gray-100 p-2 overflow-hidden"
                             >
-                                <social.icon className={social.color} size={28} />
+                                <img src={social.icon} alt="social" className="w-full h-full object-contain" />
                             </motion.a>
                         ))}
                     </div>
@@ -210,12 +196,74 @@ END:VCARD`;
                         transition={{ delay: 1.5 }}
                         className="text-center"
                     >
-                        <p className="text-[10px] text-gray-500 font-bold tracking-widest uppercase">
+                        <p className="text-[12px] text-gray-500 font-bold tracking-widest uppercase">
                             GST No. {gstNo}
                         </p>
                     </motion.div>
                 </div>
             </motion.div>
+
+            {/* QR Code Modal Using Framer Motion */}
+            <AnimatePresence>
+                {showQR && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-[100] p-4"
+                        onClick={() => setShowQR(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="bg-white rounded-[2rem] p-8 w-full max-w-sm shadow-2xl relative overflow-hidden"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Decorative Background for Modal */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16" />
+
+                            {/* Logo in Modal */}
+                            <div className="flex justify-center mb-4">
+                                <img src={logo} alt={COMPANY_INFO.name} className="h-24 w-auto object-contain" />
+                            </div>
+
+                            {/* <h3 className="text-xl font-black mb-6 text-gray-900 border-b border-gray-100 pb-4 text-center">
+                                Scan or Share URL
+                            </h3> */}
+
+                            <div className="bg-gray-50 rounded-3xl p-6 mb-8 border border-gray-100 shadow-inner flex items-center justify-center aspect-square overflow-hidden">
+                                <img
+                                    src={qrUrl}
+                                    alt="QR code"
+                                    className="w-full h-full object-contain rounded-xl hover:scale-105 transition-transform duration-500 py-3"
+                                />
+                            </div>
+
+                            <div className="flex gap-4">
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={handleNativeShare}
+                                    className="flex-1 bg-red-600 text-white font-bold py-4 px-4 rounded-2xl shadow-lg shadow-red-100 flex items-center justify-center gap-2"
+                                >
+                                    <Share2 size={20} />
+                                    Share
+                                </motion.button>
+
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => setShowQR(false)}
+                                    className="flex-1 bg-gray-100 text-gray-800 font-bold py-4 px-4 rounded-2xl hover:bg-gray-200 transition-colors"
+                                >
+                                    Close
+                                </motion.button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
