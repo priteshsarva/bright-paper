@@ -24,11 +24,11 @@ export const COMPANY_INFO = {
   phone: '+916357912345',
   whatsapp: '916357912345',
   socialLinks: {
-    instagram: 'https://www.instagram.com/brightpaper_company',
+    instagram: 'https://www.instagram.com/brightpaper_company/?hl=en',
     facebook: 'https://www.facebook.com/people/Asawa-Arun/61586704033137/',
-    telegram: 'https://t.me/+916357012323',
-    whatsapp: 'https://wa.me/91 6357912345?text=Hello%20Arun%20Asawa',
-    linkedin: '/',
+    telegram: 'https://t.me/+916357912345',
+    whatsapp: 'https://wa.me/916357912345?text=Hello%20Arun%20Asawa',
+    linkedin: 'https://www.linkedin.com/in/arun-asawa-881b17409/',
     // youtube: 'https://www.youtube.com/yourprofile',
   },
   address: {
