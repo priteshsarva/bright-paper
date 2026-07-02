@@ -14,14 +14,18 @@ import Loader from './components/Loader';
 import DigitalVisitingCard from './pages/DigitalVisitingCard';
 import CustomCursor from './components/CustomCursor';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
+import Qqr from './pages/Qqr';
 
 function AppContent() {
   const location = useLocation();
   const isCardPage = location.pathname === '/card';
+  const isqrPage = location.pathname === '/qr';
+
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {!isCardPage && <Header />}
+      {!isCardPage && !isqrPage && <Header />}
+      
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -32,10 +36,12 @@ function AppContent() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/card" element={<DigitalVisitingCard />} />
+          <Route path="/qr" element={<Qqr />} />
+
         </Routes>
       </main>
-      {!isCardPage && <CTASection />}
-      {!isCardPage && <Footer />}
+      {!isCardPage && !isqrPage && <CTASection />}
+      {!isCardPage && !isqrPage && <Footer />}
     </div>
   );
 }

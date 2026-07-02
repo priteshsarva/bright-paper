@@ -91,7 +91,7 @@ END:VCARD`;
 
 
                     {/* Name & Designation Box */}
-                    <motion.div
+                    {/* <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 2.3 }}
@@ -99,12 +99,12 @@ END:VCARD`;
                     >
                         <h1 className="text-3xl font-bold text-gray-900 mb-1">{mdName}</h1>
                         <p className="text-gray-500 font-bold text-sm tracking-widest uppercase">{designation}</p>
-                    </motion.div>
+                    </motion.div> */}
 
 
 
                     {/* Tagline Box */}
-                    <motion.div
+                    {/* <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 2.4 }}
@@ -116,7 +116,7 @@ END:VCARD`;
                                 {COMPANY_INFO.tagline3}
                             </p>
                         </div>
-                    </motion.div>
+                    </motion.div> */}
 
 
 
