@@ -196,7 +196,7 @@ END:VCARD`;
                             { icon: instagramImg, href: COMPANY_INFO.socialLinks.instagram },
                             { icon: facebookImg, href: COMPANY_INFO.socialLinks.facebook },
                             { icon: linkedinImg, href: COMPANY_INFO.socialLinks.linkedin || '#' },
-                            { icon: telegramImg, href: COMPANY_INFO.socialLinks.telegram },
+                            { icon: telegramImg, href: OWNER_INFO.socialLinks.telegram },
                         ].map((social, i) => (
                             <motion.a
                                 key={i}

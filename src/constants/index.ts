@@ -61,7 +61,7 @@ export const OWNER_INFO = {
   socialLinks: {
     instagram: 'https://www.instagram.com/brightpaper_company/?hl=en',
     facebook: 'https://www.facebook.com/people/Asawa-Arun/61586704033137/',
-    telegram: 'https://t.me/+916357912345',
+    telegram: 'https://t.me/+919377711259',
     whatsapp: 'https://wa.me/919377711259?text=Hello%20Arun%20Asawa',
     linkedin: 'https://www.linkedin.com/in/arun-asawa-881b17409/',
     // youtube: 'https://www.youtube.com/yourprofile',
