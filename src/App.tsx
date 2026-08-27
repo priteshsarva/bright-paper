@@ -12,19 +12,21 @@ import CTASection from './components/home/CTASection';
 import ScrollToTop from './components/ScrollToTop';
 import Loader from './components/Loader';
 import DigitalVisitingCard from './pages/DigitalVisitingCard';
-import CustomCursor from './components/CustomCursor';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import Qqr from './pages/Qqr';
+import Asqr from './pages/Asqr';
+import AsDigitalVisitingCard from './pages/AsDigitalVisitingCard';
 
 function AppContent() {
   const location = useLocation();
-  const isCardPage = location.pathname === '/card';
-  const isqrPage = location.pathname === '/qr';
+  // Standalone pages rendered without header / CTA / footer
+  const bareLayoutPaths = ['/card', '/qr', '/card/arun-asawa', '/qr-as'];
+  const isBarePage = bareLayoutPaths.includes(location.pathname);
 
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {!isCardPage && !isqrPage && <Header />}
+      {!isBarePage && <Header />}
       
       <main className="flex-grow">
         <Routes>
@@ -37,11 +39,12 @@ function AppContent() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/card" element={<DigitalVisitingCard />} />
           <Route path="/qr" element={<Qqr />} />
-
+          <Route path="/card/arun-asawa" element={<AsDigitalVisitingCard />} />
+          <Route path="/qr-as" element={<Asqr/>} />
         </Routes>
       </main>
-      {!isCardPage && !isqrPage && <CTASection />}
-      {!isCardPage && !isqrPage && <Footer />}
+      {!isBarePage && <CTASection />}
+      {!isBarePage && <Footer />}
     </div>
   );
 }
@@ -53,7 +56,6 @@ function App() {
   return (
     <Router>
       <Loader />
-      <CustomCursor />
       <ScrollToTop />
       <AppContent />
     </Router>

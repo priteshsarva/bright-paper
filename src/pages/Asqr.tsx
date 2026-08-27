@@ -15,7 +15,7 @@ import {
 
 import logo from '../assets/images/logo.png';
 
-const Qqr = () => {
+const Asqr = () => {
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -48,7 +48,7 @@ const Qqr = () => {
         {
             title: 'E-Visiting Card',
             description: 'Save our contact details instantly',
-            url: 'https://brightpaper.co.in/card',
+            url: 'https://brightpaper.co.in/card/arun-asawa',
             icon: CreditCard,
             color: 'green' // Green secondary focus
         },
@@ -118,7 +118,7 @@ const Qqr = () => {
                                 key={index}
                                 id={`link-button-${index}`}
                                 href={link.url}
-                                rel="noreferrer"
+                                rel="noopener noreferrer"
                                 whileHover={{ y: -2, scale: 1.01 }}
                                 whileTap={{ scale: 0.99 }}
                                 className="group w-full bg-white border border-slate-200 p-5 rounded-2xl shadow-sm flex items-center justify-between transition-all duration-300 hover:border-slate-300 hover:shadow-md"
@@ -189,4 +189,4 @@ const Qqr = () => {
     )
 }
 
-export default Qqr
+export default Asqr;

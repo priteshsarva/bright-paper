@@ -45,6 +45,41 @@ export const COMPANY_INFO = {
   }
 };
 
+export const OWNER_INFO = {
+  name: 'Arun Asawa',
+  tagline: `Premium Paper Products For Sustainable Packaging`,
+  tagline2: `Premium Paper Products For`,
+  tagline3: `Sustainable Packaging`,
+
+  establishedYear: 2007,
+  citiesServed: 28,
+  dealerCount: '500+',
+  turnover: '50,000 Tons',
+  email: 'info@brightpaper.co.in',
+  phone: '+919377711259',
+  whatsapp: '919377711259',
+  socialLinks: {
+    instagram: 'https://www.instagram.com/brightpaper_company/?hl=en',
+    facebook: 'https://www.facebook.com/people/Asawa-Arun/61586704033137/',
+    telegram: 'https://t.me/+916357912345',
+    whatsapp: 'https://wa.me/919377711259?text=Hello%20Arun%20Asawa',
+    linkedin: 'https://www.linkedin.com/in/arun-asawa-881b17409/',
+    // youtube: 'https://www.youtube.com/yourprofile',
+  },
+  address: {
+    street: 'Plot no 128/129, 2nd floor, Laxminarayan industrial estate, BRC compound, Opp Daksheshwar mahadev temple, Udhana-pandesara',
+    city: 'Surat',
+    state: 'Gujarat',
+    country: 'India',
+    pincode: '394210',
+    mapLink: 'https://maps.app.goo.gl/hcsx4hvK3T4ftKdu7'
+  },
+  businessHours: {
+    weekdays: 'Monday - Saturday: 9:00 AM - 6:00 PM',
+    sunday: 'Sunday: Closed'
+  }
+};
+
 export const PRODUCT_CATEGORIES = [
   {
     id: 'fbb',
