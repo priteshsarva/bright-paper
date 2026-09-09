@@ -1,81 +1,53 @@
 import { useState, FormEvent } from 'react';
-import { MapPin, Mail, Phone, Clock, MessageSquare } from 'lucide-react';
+import { MapPin, Mail, Phone, Clock, MessageSquare, CheckCircle2 } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 import SectionHeader from '../components/SectionHeader';
 import Card from '../components/Card';
 import FormInput from '../components/FormInput';
 import Button from '../components/Button';
 import { COMPANY_INFO, INQUIRY_TYPES } from '../constants';
-import { supabase } from '../utils/supabase';
 import { InquirySubmission } from '../types/database.types';
+import { submitInquiry } from '../utils/inquiryForm';
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
 
 
-export default function Contact() {
-  const [formData, setFormData] = useState<InquirySubmission>({
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    message: '',
-    inquiry_type: 'Bulk Order',
-    product_interest: '',
-    quantity: ''
-  });
+const EMPTY_FORM: InquirySubmission = {
+  name: '',
+  company: '',
+  email: '',
+  phone: '',
+  message: '',
+  inquiry_type: 'Bulk Order',
+  product_interest: '',
+  quantity: ''
+};
 
-  const [loading, setLoading] = useState(false);
+export default function Contact() {
+  const [formData, setFormData] = useState<InquirySubmission>(EMPTY_FORM);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setError('');
-    setSuccess(false);
 
-    // Replace this with the URL you copied in Step 1
-    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzmCWYyyViSwOgmS5vZJpaqsmxqtH9JsFXQsOPkG20POfmCqxSa4yG66uFf_Zi12vDjrg/exec';
+    const submitted = formData;
 
-    try {
-      // 1. Save to Supabase (Existing logic)
-      // const { error: insertError } = await supabase
-      //   .from('inquiry_submissions')
-      //   .insert([formData]);
+    // Confirm straight away rather than making the visitor watch a spinner.
+    // The Apps Script round trip is ~2-3s, most of it Google cold-starting the
+    // script and redirecting to googleusercontent.com — none of which the
+    // visitor has any reason to wait on.
+    setSuccess(true);
+    setFormData(EMPTY_FORM);
 
-      // if (insertError) throw insertError;
-
-      // 2. Save to Google Sheets (Parallel logic)
-      // Use 'no-cors' mode because Google Apps Script redirects cause CORS issues in browsers, 
-      // but the data will still be sent successfully.
-      await fetch(GOOGLE_SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      // 3. Success Handling
-      setSuccess(true);
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        message: '',
-        inquiry_type: 'Bulk Order',
-        product_interest: '',
-        quantity: ''
-      });
-
-      setTimeout(() => setSuccess(false), 5000);
-    } catch (err) {
+    submitInquiry(submitted).catch((err) => {
       console.error('Error submitting inquiry:', err);
+      // Take the confirmation back and hand the details back to the visitor,
+      // so a failed submission never costs them what they typed.
+      setSuccess(false);
+      setFormData(submitted);
       setError('Failed to submit inquiry. Please try again or contact us directly.');
-    } finally {
-      setLoading(false);
-    }
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -165,13 +137,6 @@ export default function Contact() {
               <p className="text-neutral-600 mb-8">
                 Fill out the form below and our team will get back to you promptly with the information you need.
               </p>
-
-              {success && (
-                <div className="bg-secondary-50 border border-secondary-200 text-secondary-800 px-6 py-4 rounded-lg mb-6">
-                  <p className="font-semibold">Thank you for your inquiry!</p>
-                  <p className="text-sm mt-1">We'll get back to you within 24 hours.</p>
-                </div>
-              )}
 
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-lg mb-6">
@@ -268,13 +233,8 @@ export default function Contact() {
                   rows={5}
                 />
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  fullWidth
-                  disabled={loading}
-                >
-                  {loading ? 'Submitting...' : 'Submit Inquiry'}
+                <Button type="submit" size="lg" fullWidth>
+                  Submit Inquiry
                 </Button>
               </form>
             </div>
@@ -338,6 +298,33 @@ export default function Contact() {
           </div>
         </section>
       </PageWrapper>
+
+      {success && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="inquiry-success-title"
+          onClick={() => setSuccess(false)}
+        >
+          {/* stopPropagation so a click inside the card does not dismiss it */}
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <CheckCircle2 className="text-primary mx-auto mb-4" size={56} />
+            <h3 id="inquiry-success-title" className="text-2xl font-bold text-neutral-900 mb-2">
+              Thank you for your inquiry!
+            </h3>
+            <p className="text-neutral-600 mb-6">
+              We have received your details. Our team will get back to you within 24 hours.
+            </p>
+            <Button type="button" fullWidth onClick={() => setSuccess(false)}>
+              Close
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
