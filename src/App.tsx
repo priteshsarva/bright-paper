@@ -16,6 +16,7 @@ import { useSmoothScroll } from './hooks/useSmoothScroll';
 import Qqr from './pages/Qqr';
 import Asqr from './pages/Asqr';
 import AsDigitalVisitingCard from './pages/AsDigitalVisitingCard';
+import ChatWidget from './components/chat/ChatWidget';
 
 function AppContent() {
   const location = useLocation();
@@ -45,6 +46,7 @@ function AppContent() {
       </main>
       {!isBarePage && <CTASection />}
       {!isBarePage && <Footer />}
+      {!isBarePage && <ChatWidget />}
     </div>
   );
 }

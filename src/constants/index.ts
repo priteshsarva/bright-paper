@@ -10,6 +10,12 @@ import VIRGINKRAFT from '../assets/images/VIRGIN KRAFT.jpg'
 
 
 
+/** Shown in the chat widget header. Change the name or subtitle here only. */
+export const CHAT_ASSISTANT = {
+  name: 'Bright Paper Assistant',
+  subtitle: 'Typically replies instantly'
+};
+
 export const COMPANY_INFO = {
   name: 'Bright Paper',
   tagline: `Premium Paper Products For Sustainable Packaging`,

@@ -1,0 +1,16 @@
+# Build command and publish directory are deliberately NOT set here: they live
+# in the Netlify UI, and repeating them in this file would silently override
+# whatever is configured there.
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# The browser calls /api/chat in development (Vite plugin) and in production
+# (this function), so nothing in the frontend has to know where it is running.
+# Listed here rather than in public/_redirects because netlify.toml rules are
+# evaluated first — otherwise the SPA catch-all would swallow /api/chat.
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
