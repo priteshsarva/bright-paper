@@ -6,11 +6,6 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# The browser calls /api/chat in development (Vite plugin) and in production
-# (this function), so nothing in the frontend has to know where it is running.
-# Listed here rather than in public/_redirects because netlify.toml rules are
-# evaluated first — otherwise the SPA catch-all would swallow /api/chat.
-[[redirects]]
-  from = "/api/chat"
-  to = "/.netlify/functions/chat"
-  status = 200
+# The /api/chat rewrite lives in public/_redirects, not here: this file was not
+# picked up on deploy (the build settings are configured in the Netlify UI), and
+# the function 404'd until the rule moved into _redirects.

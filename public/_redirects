@@ -1,1 +1,5 @@
+# The chat API. Must sit above the SPA catch-all: the first matching rule wins,
+# and /* cannot serve index.html to a POST, so /api/chat would 404 instead.
+/api/chat    /.netlify/functions/chat    200
+
 /*    /index.html   200
