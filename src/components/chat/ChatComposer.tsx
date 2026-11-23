@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, FormEvent, KeyboardEvent } from 'react';
-import { Send } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 interface ChatComposerProps {
   onSend: (text: string) => void;
@@ -36,30 +36,37 @@ export default function ChatComposer({ onSend, disabled = false }: ChatComposerP
     }
   };
 
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex-shrink-0 flex items-end gap-2 border-t border-neutral-200 bg-white px-3 py-2.5"
-    >
-      <textarea
-        ref={textareaRef}
-        rows={1}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Ask about our paper products..."
-        aria-label="Message"
-        className="flex-1 resize-none bg-neutral-100 rounded-xl px-4 py-2.5 text-sm text-neutral-800 placeholder:text-neutral-400 outline-none focus:ring-2 focus:ring-primary-200 max-h-[120px]"
-      />
+  const canSend = !disabled && value.trim().length > 0;
 
-      <button
-        type="submit"
-        disabled={disabled || !value.trim()}
-        aria-label="Send message"
-        className="flex-shrink-0 w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center transition-all duration-200 hover:bg-primary-600 active:bg-primary-700 disabled:opacity-40 disabled:cursor-not-allowed"
+  return (
+    <div className="flex-shrink-0 border-t border-neutral-100 bg-white px-3 pt-3 pb-2">
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-end gap-2 rounded-[22px] border border-neutral-200 bg-neutral-50 py-1.5 pl-4 pr-1.5 transition-colors focus-within:border-primary-300 focus-within:bg-white focus-within:ring-4 focus-within:ring-primary-50"
       >
-        <Send className="w-4 h-4" />
-      </button>
-    </form>
+        <textarea
+          ref={textareaRef}
+          rows={1}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Type your message..."
+          aria-label="Message"
+          className="flex-1 resize-none self-center bg-transparent py-1.5 text-sm text-neutral-800 placeholder:text-neutral-400 outline-none max-h-[120px]"
+        />
+
+        <button
+          type="submit"
+          disabled={!canSend}
+          aria-label="Send message"
+          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-sm transition-all duration-200 hover:bg-primary-600 active:scale-95 disabled:bg-neutral-200 disabled:text-neutral-400 disabled:shadow-none disabled:cursor-not-allowed"
+        >
+          <ArrowUp className="h-[18px] w-[18px]" strokeWidth={2.5} />
+        </button>
+      </form>
+      <p className="mt-1.5 text-center text-[10.5px] text-neutral-400">
+        Powered by <span className="font-semibold text-neutral-500">Bright Paper</span>
+      </p>
+    </div>
   );
 }

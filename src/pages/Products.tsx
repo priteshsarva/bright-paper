@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { Package, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 import SectionHeader from '../components/SectionHeader';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import { PRODUCT_CATEGORIES } from '../constants';
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
+import Reveal from '../components/Reveal';
 
 
 export default function Products() {
@@ -32,11 +33,21 @@ export default function Products() {
       <PageWrapper>
         <section className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PRODUCT_CATEGORIES.map((product) => (
-              <Card key={product.id} hover className="group cursor-pointer">
-                <div className="aspect-video  rounded-lg mb-6 flex items-center justify-center">
-                  {/* <Package className="text-neutral-400 group-hover:text-primary transition-colors" size={64} /> */}
-                  <img src={product.img} alt="" style={{ width: "100%" }} />
+            {PRODUCT_CATEGORIES.map((product, index) => (
+              <Reveal
+                key={product.id}
+                index={index}
+                className="group h-full cursor-pointer"
+                onClick={() => navigate(`/products/${product.slug}`)}
+              >
+              <Card hover className="relative h-full overflow-hidden bg-white">
+                <div className="aspect-square rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={product.img}
+                    alt={product.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors">
                   {product.name}
@@ -53,7 +64,9 @@ export default function Products() {
                   View Details
                   <ArrowRight className="inline ml-2 group-hover:translate-x-1 transition-transform" size={18} />
                 </Button>
+                <span className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-primary-600 transition-all duration-500 ease-out group-hover:w-full" />
               </Card>
+              </Reveal>
             ))}
           </div>
 

@@ -17,6 +17,7 @@ import Qqr from './pages/Qqr';
 import Asqr from './pages/Asqr';
 import AsDigitalVisitingCard from './pages/AsDigitalVisitingCard';
 import ChatWidget from './components/chat/ChatWidget';
+import FloatingButtons from './components/FloatingButtons';
 
 function AppContent() {
   const location = useLocation();
@@ -47,6 +48,7 @@ function AppContent() {
       {!isBarePage && <CTASection />}
       {!isBarePage && <Footer />}
       {!isBarePage && <ChatWidget />}
+      {!isBarePage && <FloatingButtons />}
     </div>
   );
 }

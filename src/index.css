@@ -88,3 +88,33 @@
         animation: shine 0.75s;
     }
 }
+/* ---------- MD video cover ---------- */
+.md-cover {
+  container-type: inline-size;
+  background:
+    radial-gradient(ellipse 55% 65% at 74% 36%, rgba(255, 255, 255, 0.12), transparent 70%),
+    linear-gradient(120deg, #7a7d82 0%, #55585d 35%, #33363a 70%, #1e2023 100%);
+}
+
+/* Soft studio light behind the portrait so the dark suit stands out */
+.md-cover-spot {
+  background: radial-gradient(ellipse 50% 55% at 50% 45%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12) 55%, transparent 75%);
+}
+
+.md-cover-portrait {
+  filter: drop-shadow(0 0 1.2cqw rgba(255, 255, 255, 0.25)) drop-shadow(1.5cqw 1cqw 2cqw rgba(0, 0, 0, 0.45));
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 10%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 10%);
+}
+
+.gold-3d {
+  background: linear-gradient(180deg, #fff6c8 0%, #f3d36b 28%, #c9962c 55%, #f0cf6a 72%, #8a5e12 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter:
+    drop-shadow(0.15cqw 0.15cqw 0 #8a5e12)
+    drop-shadow(0.3cqw 0.3cqw 0 #6b470c)
+    drop-shadow(0.45cqw 0.45cqw 0 #4f3407)
+    drop-shadow(1cqw 1.4cqw 1.2cqw rgba(0, 0, 0, 0.55));
+}

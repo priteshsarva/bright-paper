@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X, ChevronDown, FileText } from 'lucide-react';
-import { NAVIGATION_MENU, COMPANY_INFO } from '../constants';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import { NAVIGATION_MENU } from '../constants';
 import Button from './Button';
 import logo from '../assets/images/logo.png'
 

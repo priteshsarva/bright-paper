@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Clock, FileText, Twitter, Instagram, Linkedin, Github, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook } from 'lucide-react';
+import logoMark from '../assets/images/logo-mark.png';
 
 const Telegram = ({ className, size = 24 }: { className?: string, size?: number }) => (
   <svg
@@ -31,20 +32,27 @@ const WhatsApp = ({ className, size = 24 }: { className?: string, size?: number 
   </svg>
 );
 
+import { useRef } from 'react';
+import { motion, MotionConfig, useInView } from 'framer-motion';
 import { COMPANY_INFO, NAVIGATION_MENU } from '../constants';
+import { slideIn } from '../utils/animations';
 
 export default function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+  const inView = useInView(footerRef, { amount: 'some' });
+
   return (
-    <footer className="text-black" style={{ backgroundColor: '#f6c9a0' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <MotionConfig reducedMotion="user">
+    <footer ref={footerRef} className="text-black overflow-hidden" style={{ backgroundColor: '#f6c9a0' }}>
+      <motion.div {...slideIn(160, inView)} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
           <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <FileText className="text-white" size={24} />
-              </div>
+            <Link to="/" className="mb-4 inline-flex items-center gap-3" aria-label={`${COMPANY_INFO.name} home`}>
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-soft">
+                <img src={logoMark} alt="" className="h-7 w-7 object-contain" />
+              </span>
               <span className="text-2xl font-bold">{COMPANY_INFO.name}</span>
-            </div>
+            </Link>
             <p className="text-black mb-4">
               {COMPANY_INFO.tagline}
             </p>
@@ -87,18 +95,6 @@ export default function Footer() {
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-6 h-6" />
-                </a>
-              )}
-              {/* GitHub Icon */}
-              {COMPANY_INFO.socialLinks.github && (
-                <a
-                  href={COMPANY_INFO.socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-black hover:text-primary transition duration-300"
-                  aria-label="GitHub"
-                >
-                  <Github className="w-6 h-6" />
                 </a>
               )}
               {/* Telegram Icon */}
@@ -207,7 +203,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {COMPANY_INFO.name}. All rights reserved.
           </p>
         </div>
-      </div>
+      </motion.div>
     </footer>
+    </MotionConfig>
   );
 }

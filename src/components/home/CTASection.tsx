@@ -1,13 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Mail } from 'lucide-react';
+import { useRef } from 'react';
+import { motion, MotionConfig, useInView } from 'framer-motion';
 import Button from '../Button';
+import { slideIn } from '../../utils/animations';
 
 export default function CTASection() {
   const navigate = useNavigate();
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { amount: 'some' });
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary to-primary-600">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <MotionConfig reducedMotion="user">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-primary to-primary-600 overflow-hidden">
+      <motion.div {...slideIn(-160, inView)} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-3xl mx-auto">
           <Mail className="text-white mx-auto mb-6" size={64} />
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -37,7 +43,8 @@ export default function CTASection() {
             </Button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
+    </MotionConfig>
   );
 }

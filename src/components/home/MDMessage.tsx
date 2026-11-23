@@ -1,39 +1,75 @@
-import { Quote } from 'lucide-react';
-import Card from '../Card';
+import { useCallback, useState } from 'react';
+import { Quote, Play } from 'lucide-react';
 import { COMPANY_INFO } from '../../constants';
-import MDSIR from '../../assets/images/1520152901291.jpg'
 import AnimatedImage from '../AnimatedImage';
+import VideoModal from '../VideoModal';
+import LOGO from '../../assets/images/logo.png';
+
+const MD_VIDEO = '/videos/bright-paper-video.mp4';
+const MD_VIDEO_POSTER = '/videos/bright-paper-video-poster.jpg';
+const MD_COVER = '/videos/md-cutout.webp';
 
 export default function MDMessage() {
+  const [videoOpen, setVideoOpen] = useState(false);
+  const years = new Date().getFullYear() - COMPANY_INFO.establishedYear;
+  const closeVideo = useCallback(() => setVideoOpen(false), []);
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="aspect-square from-neutral-200 to-neutral-300 rounded-2xl flex items-center justify-center" >
+            <button
+              type="button"
+              onClick={() => setVideoOpen(true)}
+              aria-label="Play message from our Managing Director"
+              className="md-cover group relative block w-full aspect-[4/3] overflow-hidden rounded-2xl shadow-strong text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
+            >
+              {/* Spotlight behind the MD */}
+              <span className="md-cover-spot absolute bottom-0 left-[2%] h-[95%] w-[56%]" />
 
+              {/* MD cut-out portrait */}
               <AnimatedImage
-                src={MDSIR}
-                alt=""
-                className="w-full h-full object-cover "
-                shine
-                direction="scale"
+                src={MD_COVER}
+                alt="Arun Asawa, Managing Director"
+                containerClassName="absolute bottom-0 left-[3%] h-[96%] w-[52%]"
+                className="md-cover-portrait h-full w-full object-contain object-bottom origin-bottom transition-transform duration-700 group-hover:scale-[1.03]"
+                direction="up"
                 delay={0.1}
               />
-              {/* <img src={MDSIR} alt="" style={{
-                width: "100%",
-                // height: "100%",
-                objectFit: "cover",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }} /> */}
 
-              {/* <div className="text-center">
-                <div className="w-32 h-32 bg-neutral-400 rounded-full mx-auto mb-4"></div>
-                <div className="text-neutral-600 font-medium">Managing Director</div>
-              </div> */}
-            </div>
+              {/* Years of excellence */}
+              <span className="absolute right-[6%] top-[6%] flex w-[44%] flex-col items-center text-center">
+                <span className="gold-3d block font-black leading-[0.85] text-[26cqw] tracking-tighter">
+                  {years}
+                </span>
+                <span className="gold-3d block font-extrabold leading-none text-[9.5cqw] tracking-[0.08em]">
+                  YEARS
+                </span>
+                <span className="gold-3d mt-[1.2cqw] block whitespace-nowrap font-extrabold leading-none text-[4.8cqw] tracking-wide">
+                  OF EXCELLENCE
+                </span>
+                <span className="mt-[2.5cqw] block rounded-md bg-white px-[1.8cqw] py-[0.8cqw] shadow-medium">
+                  <img src={LOGO} alt="Bright Paper" className="block h-[5.5cqw] w-auto" />
+                </span>
+              </span>
+
+              {/* Play button with ripple rings */}
+              <span className="absolute -bottom-[13cqw] -right-[13cqw] flex h-[40cqw] w-[40cqw] items-center justify-center">
+                <span className="absolute inset-0 rounded-full bg-primary/15" />
+                <span className="absolute inset-[14%] rounded-full bg-primary/20" />
+                <span className="absolute inset-[30%] rounded-full bg-primary/40 animate-ping" />
+                <span className="relative -translate-x-[4cqw] -translate-y-[4cqw] flex h-[13cqw] w-[13cqw] items-center justify-center rounded-full bg-primary text-white shadow-strong transition-transform duration-300 group-hover:scale-110">
+                  <Play className="ml-[0.6cqw] h-[6cqw] w-[6cqw]" fill="currentColor" />
+                </span>
+              </span>            </button>
+            <VideoModal
+              open={videoOpen}
+              onClose={closeVideo}
+              src={MD_VIDEO}
+              poster={MD_VIDEO_POSTER}
+              title="Message from our Managing Director"
+            />
           </div>
 
           <div>

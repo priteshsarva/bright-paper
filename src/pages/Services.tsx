@@ -4,10 +4,8 @@ import PageWrapper from '../components/PageWrapper';
 import SectionHeader from '../components/SectionHeader';
 import Card from '../components/Card';
 import Button from '../components/Button';
-import { COMPANY_INFO } from '../constants';
 import distribution from '../assets/images/distribution.jpg'
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
-import serviceBg from '../assets/images/pattern.jpg';
 import AnimatedNumber from '../components/AnimatedNumber';
 import AnimatedImage from '../components/AnimatedImage';
 

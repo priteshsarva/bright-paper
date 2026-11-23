@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'motion/react';
 import {
     Globe,
@@ -9,8 +8,6 @@ import {
     Linkedin,
     Send,
     ChevronRight,
-    FileImage,
-    ExternalLink
 } from 'lucide-react';
 
 import logo from '../assets/images/logo.png';
@@ -33,7 +30,7 @@ const Asqr = () => {
         show: {
             opacity: 1,
             y: 0,
-            transition: { type: 'spring', stiffness: 100, damping: 15 }
+            transition: { type: 'spring' as const, stiffness: 100, damping: 15 }
         }
     };
 

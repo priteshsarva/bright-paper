@@ -1,18 +1,28 @@
 import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X } from 'lucide-react';
+import { ChevronDown, ArrowRight, Phone } from 'lucide-react';
 import type { ChatMessage } from '../../types/chat';
-import { CHAT_ASSISTANT } from '../../constants';
-import logoMark from '../../assets/images/logo-mark.png';
+import { CHAT_ASSISTANT, COMPANY_INFO } from '../../constants';
 import ChatMessageBubble from './ChatMessageBubble';
 import TypingIndicator from './TypingIndicator';
 import ChatComposer from './ChatComposer';
+import AgentAvatar from './AgentAvatar';
 
 const SUGGESTIONS = [
   'What products do you offer?',
   'Do you deliver to my city?',
   'Request a quote',
 ];
+
+// When each message first appeared. Module-level so times survive closing and
+// reopening the panel; message ids are unique for the life of the page.
+const firstSeen = new Map<string, number>();
+const timeFormat = new Intl.DateTimeFormat('en-IN', { hour: 'numeric', minute: '2-digit' });
+
+function timeFor(id: string) {
+  if (!firstSeen.has(id)) firstSeen.set(id, Date.now());
+  return timeFormat.format(firstSeen.get(id));
+}
 
 interface ChatPanelProps {
   messages: ChatMessage[];
@@ -49,53 +59,80 @@ export default function ChatPanel({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 16, scale: 0.98 }}
       transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+      style={{ transformOrigin: 'bottom right' }}
       role="dialog"
       aria-label="Chat with Bright Paper"
-      className="fixed z-50 flex flex-col bg-white overflow-hidden inset-x-4 bottom-24 h-[62vh] max-h-[460px] rounded-2xl shadow-strong border border-neutral-200 sm:inset-x-auto sm:right-6 sm:w-[380px] sm:h-[70vh] sm:max-h-[600px]"
+      className="fixed z-50 flex flex-col overflow-hidden bg-white inset-x-3 bottom-[8.5rem] h-[70vh] max-h-[560px] rounded-3xl border border-neutral-200/80 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.25)] sm:inset-x-auto sm:right-6 sm:bottom-[9.5rem] sm:w-[390px] sm:h-[72vh] sm:max-h-[640px]"
     >
-      <div className="flex-shrink-0 flex items-center gap-3 bg-primary px-4 py-3 text-white">
-        {/* logo-mark.png is the BP glyph cropped out of the full wordmark, so it
-            reads at avatar size where the full logo would be unintelligible. */}
-        <div className="flex-shrink-0 w-9 h-9 rounded-full bg-white flex items-center justify-center">
-          <img src={logoMark} alt="" className="w-5 h-5 object-contain" />
+      {/* Brand strip */}
+      <div className="h-1 flex-shrink-0 bg-gradient-to-r from-primary via-primary-400 to-secondary-400" />
+
+      {/* Header */}
+      <div className="flex flex-shrink-0 items-center gap-3 border-b border-neutral-100 bg-white px-4 py-3">
+        <AgentAvatar className="w-11 h-11" online />
+
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[15px] font-semibold text-neutral-900">{CHAT_ASSISTANT.name}</p>
+          <p className="flex items-center gap-1.5 text-xs text-neutral-500">
+            <span className="font-medium text-green-600">Online</span>
+            <span className="text-neutral-300">•</span>
+            <span className="truncate">{CHAT_ASSISTANT.subtitle}</span>
+          </p>
         </div>
 
-        <div className="flex-1 min-w-0">
-          <p className="font-semibold text-sm truncate">{CHAT_ASSISTANT.name}</p>
-          <p className="text-xs text-white/80">{CHAT_ASSISTANT.subtitle}</p>
-        </div>
-
+        <a
+          href={`tel:${COMPANY_INFO.phone}`}
+          aria-label="Call us"
+          title="Call us"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-primary"
+        >
+          <Phone className="h-[18px] w-[18px]" />
+        </a>
         <button
           onClick={onClose}
-          aria-label="Close chat"
-          className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors hover:bg-white/20"
+          aria-label="Minimise chat"
+          title="Minimise"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
         >
-          <X className="w-5 h-5" />
+          <ChevronDown className="h-5 w-5" />
         </button>
       </div>
 
+      {/* Conversation */}
       <div
         ref={scrollRef}
         data-lenis-prevent
         role="log"
         aria-live="polite"
-        className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-3 py-3 space-y-2.5"
+        className="min-h-0 flex-1 overflow-y-auto overscroll-contain bg-[#f7f7f8] px-4 pb-4 pt-2"
       >
-        {messages.map((message) => (
-          <ChatMessageBubble key={message.id} message={message} />
+        <div className="my-2 flex items-center gap-3">
+          <span className="h-px flex-1 bg-neutral-200" />
+          <span className="text-[10.5px] font-medium uppercase tracking-wider text-neutral-400">Today</span>
+          <span className="h-px flex-1 bg-neutral-200" />
+        </div>
+
+        {messages.map((message, index) => (
+          <ChatMessageBubble
+            key={message.id}
+            message={message}
+            time={timeFor(message.id)}
+            grouped={index > 0 && messages[index - 1].role === message.role}
+          />
         ))}
 
         <AnimatePresence>{isTyping && <TypingIndicator />}</AnimatePresence>
 
         {showSuggestions && (
-          <div className="flex flex-wrap gap-2 pt-2">
+          <div className="ml-[42px] mt-3 flex flex-col items-start gap-2">
             {SUGGESTIONS.map((suggestion) => (
               <button
                 key={suggestion}
                 onClick={() => onSend(suggestion)}
-                className="px-3 py-1.5 rounded-full border border-primary-200 bg-primary-50 text-primary-700 text-xs font-medium transition-colors hover:bg-primary-100"
+                className="group flex items-center gap-2 rounded-full border border-primary-200 bg-white px-3.5 py-1.5 text-[13px] font-medium text-primary-700 shadow-sm transition-all hover:border-primary hover:bg-primary hover:text-white"
               >
                 {suggestion}
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </button>
             ))}
           </div>
