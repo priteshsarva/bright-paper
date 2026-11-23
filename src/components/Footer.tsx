@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook } from 'lucide-react';
-import logoMark from '../assets/images/logo-mark.png';
+import logo from '../assets/images/logo.png';
 
 const Telegram = ({ className, size = 24 }: { className?: string, size?: number }) => (
   <svg
@@ -47,11 +47,12 @@ export default function Footer() {
       <motion.div {...slideIn(160, inView)} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
           <div>
-            <Link to="/" className="mb-4 inline-flex items-center gap-3" aria-label={`${COMPANY_INFO.name} home`}>
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-soft">
-                <img src={logoMark} alt="" className="h-7 w-7 object-contain" />
-              </span>
-              <span className="text-2xl font-bold">{COMPANY_INFO.name}</span>
+            <Link
+              to="/"
+              className="mb-4 inline-block -ml-3 transition-opacity hover:opacity-80"
+              aria-label={`${COMPANY_INFO.name} home`}
+            >
+              <img src={logo} alt={COMPANY_INFO.name} className="h-16 w-auto" />
             </Link>
             <p className="text-black mb-4">
               {COMPANY_INFO.tagline}
