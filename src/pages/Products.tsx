@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 import SectionHeader from '../components/SectionHeader';
@@ -54,7 +54,8 @@ export default function Products() {
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors">
-                  {product.name}
+                  {/* Real link so search engines can find each product page */}
+                  <Link to={`/products/${product.slug}`}>{product.name}</Link>
                 </h3>
                 <p className="text-neutral-600 mb-6">
                   {product.description}

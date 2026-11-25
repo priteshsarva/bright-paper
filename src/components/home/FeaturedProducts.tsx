@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Card from '../Card';
 import SectionHeader from '../SectionHeader';
@@ -39,18 +39,19 @@ export default function FeaturedProducts() {
                 />
               </div>
               <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary transition-colors">
-                {product.name}
+                {/* Real links (not just onClick) so search engines can find product pages */}
+                <Link to={`/products/${product.slug}`}>{product.name}</Link>
               </h3>
               <p className="text-neutral-600 mb-4">
                 {product.description}
               </p>
-              <button
-                onClick={() => navigate(`/products/${product.slug}`)}
+              <Link
+                to={`/products/${product.slug}`}
                 className="text-primary font-semibold flex items-center group-hover:gap-2 transition-all"
               >
                 Learn More
                 <ArrowRight className="ml-1 group-hover:translate-x-1 transition-transform" size={18} />
-              </button>
+              </Link>
               <span className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-primary-600 transition-all duration-500 ease-out group-hover:w-full" />
             </Card>
             </Reveal>

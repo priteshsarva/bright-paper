@@ -159,7 +159,7 @@ export const NAVIGATION_MENU = [
       { name: 'Duplex Board', path: '/products/duplex-board' },
       { name: 'Recycled Kraft Paper', path: '/products/recycled-kraft-paper' },
       { name: 'Art Paper', path: '/products/art-paper' },
-      { name: 'Kappa Board', path: '/products/kappa-board ' },
+      { name: 'Kappa Board', path: '/products/kappa-board' },
     ]
   },
   { name: 'Gallery', path: '/gallery' },

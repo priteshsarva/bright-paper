@@ -36,14 +36,21 @@ export default function Header() {
                   onMouseEnter={() => setProductsOpen(true)}
                   onMouseLeave={() => setProductsOpen(false)}
                 >
-                  <button className="flex items-center space-x-1 text-neutral-700 hover:text-primary transition-colors font-medium py-2"> {/* Added py-2 to button to increase hit area */}
+                  {/* A real link (not a button) so search engines can reach /products */}
+                  <Link
+                    to={item.path}
+                    className="flex items-center space-x-1 text-neutral-700 hover:text-primary transition-colors font-medium py-2"
+                  >
                     <span>{item.name}</span>
                     <ChevronDown size={16} />
-                  </button>
+                  </Link>
 
-                  {productsOpen && (
-
-                    <div className="absolute top-full left-0 w-56 pt-2 z-50 animate-fade-in">
+                  {/* Always in the page (only hidden when closed), so crawlers see the product links */}
+                  <div
+                    className={`absolute top-full left-0 w-56 pt-2 z-50 transition-opacity duration-200 ${
+                      productsOpen ? 'visible opacity-100' : 'invisible opacity-0'
+                    }`}
+                  >
                       {/* Inner div holds the visual styling */}
                       <div className="bg-white rounded-lg shadow-strong py-2 border border-neutral-100">
                         {item.submenu.map((subItem) => (
@@ -56,8 +63,7 @@ export default function Header() {
                           </Link>
                         ))}
                       </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
               ) : (
                 <Link
