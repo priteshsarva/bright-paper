@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { Fragment, useRef } from 'react';
 
 interface TextRevealProps {
     text: string;
@@ -54,18 +54,23 @@ export default function TextReveal({
             variants={containerVariants}
             className={`inline-block ${className}`}
         >
+            {/* A real space between words (not just margin), so search engines and
+                screen readers read "Premium Paper" instead of "PremiumPaper". */}
             {words.map((word, i) => (
-                <span key={i} className="inline-block whitespace-nowrap mr-[0.25em]">
-                    {word.split("").map((char, j) => (
-                        <motion.span
-                            key={`${i}-${j}`}
-                            variants={childVariants}
-                            className="inline-block"
-                        >
-                            {char}
-                        </motion.span>
-                    ))}
-                </span>
+                <Fragment key={i}>
+                    {i > 0 && ' '}
+                    <span className="inline-block whitespace-nowrap">
+                        {word.split("").map((char, j) => (
+                            <motion.span
+                                key={`${i}-${j}`}
+                                variants={childVariants}
+                                className="inline-block"
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
+                    </span>
+                </Fragment>
             ))}
         </motion.span>
     );

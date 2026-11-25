@@ -26,7 +26,7 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 mb-6 leading-tight">
-            <TextReveal text="Premium Paper Products for" />
+            <TextReveal text="Premium Paper Products for" />{' '}
             <span className="text-primary block mt-2">
               <TextReveal text="Sustainable Packaging" delay={0.5} />
             </span>

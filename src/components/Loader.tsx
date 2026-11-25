@@ -22,10 +22,10 @@ export default function Loader() {
             <div className="text-center">
                 {/* Animated Logo/Brand Name */}
                 <div className="mb-8">
-                    <h1 className="text-5xl md:text-6xl font-bold mb-2">
+                    <p className="text-5xl md:text-6xl font-bold mb-2" aria-hidden="true">
                         <span className="text-[#F36B2C] inline-block animate-fade-in-up">Bright</span>
                         <span className="text-[#5A8F2E] inline-block animate-fade-in-up animation-delay-200">Paper</span>
-                    </h1>
+                    </p>
                     <p className="text-neutral-600 text-lg animate-fade-in-up animation-delay-400">
                         Manufacturing Excellence
                     </p>

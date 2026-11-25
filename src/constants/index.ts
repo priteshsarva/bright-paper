@@ -157,7 +157,7 @@ export const NAVIGATION_MENU = [
       { name: 'SBS', path: '/products/sbs' },
       { name: 'Virgin Kraft Paper', path: '/products/virgin-paper' },
       { name: 'Duplex Board', path: '/products/duplex-board' },
-      { name: 'Recycled kraft paper', path: '/products/recycled-kraft-paper' },
+      { name: 'Recycled Kraft Paper', path: '/products/recycled-kraft-paper' },
       { name: 'Art Paper', path: '/products/art-paper' },
       { name: 'Kappa Board', path: '/products/kappa-board ' },
     ]

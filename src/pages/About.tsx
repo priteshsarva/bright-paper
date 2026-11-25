@@ -9,6 +9,8 @@ import missionBg from '../assets/images/mission-bg.jpg';
 import visionBg from '../assets/images/vision-bg.png';
 import AnimatedNumber from '../components/AnimatedNumber';
 import AnimatedImage from '../components/AnimatedImage';
+import Seo from '../components/Seo';
+import { PAGE_SEO } from '../constants/seo';
 
 export default function About() {
   const milestones = [
@@ -79,6 +81,7 @@ export default function About() {
 
   return (
     <div>
+      <Seo {...PAGE_SEO.about} />
       <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
         <img
           src={backgroundImage}
@@ -88,6 +91,7 @@ export default function About() {
         <div className="relative z-10">
           <PageWrapper>
             <SectionHeader
+              as="h1"
               title="About Bright Paper"
               subtitle="Building trust through quality, innovation, and commitment to excellence since 2007"
             />

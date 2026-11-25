@@ -32,6 +32,8 @@ import img7 from '../assets/images/gallery/Gemini_Generated_Image_ft9klsft9klsft
 // import img26 from '../assets/images/gallery/16.jpeg';
 
 import AnimatedImage from '../components/AnimatedImage';
+import Seo from '../components/Seo';
+import { PAGE_SEO } from '../constants/seo';
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -74,6 +76,7 @@ export default function Gallery() {
 
   return (
     <div>
+      <Seo {...PAGE_SEO.gallery} />
       <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
         <img
           src={backgroundImage}
@@ -83,6 +86,7 @@ export default function Gallery() {
         <div className="relative z-10">
           <PageWrapper>
             <SectionHeader
+              as="h1"
               title="Gallery"
               subtitle="Explore our range of products, applications, and manufacturing excellence"
             />

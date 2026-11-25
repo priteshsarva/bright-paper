@@ -13,6 +13,8 @@ import artPaper from '../assets/images/artpaper.jpg'
 import kappaBoard from '../assets/images/kappaboard-4.jpg'
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
 import AnimatedImage from '../components/AnimatedImage';
+import Seo from '../components/Seo';
+import { productSeo } from '../constants/seo';
 
 
 interface ProductData {
@@ -58,7 +60,7 @@ const PRODUCT_DATA: ProductData = {
   },
   'recycled-kraft-paper': {
     img: craftpaper, // Keep variable name as is, or rename to kraftPaper if you update imports
-    name: 'Recycled kraft paper',
+    name: 'Recycled Kraft Paper',
     description: 'Durable kraft paper for various industrial applications',
     fullDescription: 'High-quality kraft paper known for its exceptional strength and versatility. Perfect for heavy-duty packaging and industrial applications where durability is paramount.',
     specifications: [
@@ -236,6 +238,7 @@ export default function ProductDetail() {
   if (!productData || !category) {
     return (
       <PageWrapper>
+        <Seo title="Product Not Found | Bright Paper" description="This product could not be found. Browse all Bright Paper products." noindex />
         <div className="text-center py-20">
           <Package className="text-neutral-400 mx-auto mb-4" size={64} />
           <h2 className="text-2xl font-bold text-neutral-900 mb-4">Product Not Found</h2>
@@ -249,6 +252,7 @@ export default function ProductDetail() {
 
   return (
     <div>
+      <Seo {...productSeo(productData.name, productData.description)} />
       <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
         <img
           src={backgroundImage}

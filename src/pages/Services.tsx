@@ -8,6 +8,8 @@ import distribution from '../assets/images/distribution.jpg'
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
 import AnimatedNumber from '../components/AnimatedNumber';
 import AnimatedImage from '../components/AnimatedImage';
+import Seo from '../components/Seo';
+import { PAGE_SEO } from '../constants/seo';
 
 export default function Services() {
   const navigate = useNavigate();
@@ -94,6 +96,7 @@ export default function Services() {
 
   return (
     <div>
+      <Seo {...PAGE_SEO.services} />
       <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
         <img
           src={backgroundImage}
@@ -103,6 +106,7 @@ export default function Services() {
         <div className="relative z-10">
           <PageWrapper>
             <SectionHeader
+              as="h1"
               title="Our Services"
               subtitle="Comprehensive solutions and support for all your paper product needs"
             />

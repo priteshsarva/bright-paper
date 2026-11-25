@@ -22,7 +22,7 @@ export default function Header() {
             {/* <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <FileText className="text-white" size={24} />
             </div> */}
-            <img src={logo} alt="" className=" h-20" />
+            <img src={logo} alt="Bright Paper" className=" h-20" />
 
             {/* <span className="text-2xl font-bold text-neutral-900">{COMPANY_INFO.name}</span> */}
           </Link>

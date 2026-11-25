@@ -18,6 +18,7 @@ import Asqr from './pages/Asqr';
 import AsDigitalVisitingCard from './pages/AsDigitalVisitingCard';
 import ChatWidget from './components/chat/ChatWidget';
 import FloatingButtons from './components/FloatingButtons';
+import Seo from './components/Seo';
 
 function AppContent() {
   const location = useLocation();
@@ -28,6 +29,8 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      {/* Personal visiting-card / QR pages stay out of search results */}
+      {isBarePage && <Seo title="Bright Paper" description="Bright Paper, Surat." noindex />}
       {!isBarePage && <Header />}
       
       <main className="flex-grow">

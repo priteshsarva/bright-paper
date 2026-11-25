@@ -7,6 +7,8 @@ import Button from '../components/Button';
 import { PRODUCT_CATEGORIES } from '../constants';
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
 import Reveal from '../components/Reveal';
+import Seo from '../components/Seo';
+import { PAGE_SEO } from '../constants/seo';
 
 
 export default function Products() {
@@ -14,6 +16,7 @@ export default function Products() {
 
   return (
     <div>
+      <Seo {...PAGE_SEO.products} />
       <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
         <img
           src={backgroundImage}
@@ -23,6 +26,7 @@ export default function Products() {
         <div className="relative z-10">
           <PageWrapper>
             <SectionHeader
+              as="h1"
               title="Our Products"
               subtitle="Comprehensive range of premium paper products for diverse industrial applications"
             />

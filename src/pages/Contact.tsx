@@ -9,6 +9,8 @@ import { COMPANY_INFO, INQUIRY_TYPES } from '../constants';
 import { InquirySubmission } from '../types/database.types';
 import { submitInquiry } from '../utils/inquiryForm';
 import backgroundImage from '../assets/images/bgOfAllheaders.jpeg';
+import Seo from '../components/Seo';
+import { PAGE_SEO } from '../constants/seo';
 
 
 const EMPTY_FORM: InquirySubmission = {
@@ -59,6 +61,7 @@ export default function Contact() {
 
   return (
     <div>
+      <Seo {...PAGE_SEO.contact} />
       <section className="relative bg-gradient-to-br from-primary-50 to-white py-16 overflow-hidden">
         <img
           src={backgroundImage}
@@ -68,6 +71,7 @@ export default function Contact() {
         <div className="relative z-10">
           <PageWrapper>
             <SectionHeader
+              as="h1"
               title="Contact Us"
               subtitle="Get in touch with us for inquiries, bulk orders, or partnership opportunities"
             />
