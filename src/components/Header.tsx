@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { NAVIGATION_MENU } from '../constants';
 import Button from './Button';
@@ -9,6 +9,13 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  // Close the Products dropdown whenever the page changes. After clicking an item
+  // the mouse is still over the menu, so mouse-leave alone would leave it open.
+  useEffect(() => {
+    setProductsOpen(false);
+  }, [pathname]);
 
   const handleInquiryClick = () => {
     navigate('/contact');
@@ -39,6 +46,7 @@ export default function Header() {
                   {/* A real link (not a button) so search engines can reach /products */}
                   <Link
                     to={item.path}
+                    onClick={() => setProductsOpen(false)}
                     className="flex items-center space-x-1 text-neutral-700 hover:text-primary transition-colors font-medium py-2"
                   >
                     <span>{item.name}</span>
@@ -57,6 +65,7 @@ export default function Header() {
                           <Link
                             key={subItem.name}
                             to={subItem.path}
+                            onClick={() => setProductsOpen(false)}
                             className="block px-4 py-2 text-neutral-700 hover:bg-primary-50 hover:text-primary transition-colors"
                           >
                             {subItem.name}
