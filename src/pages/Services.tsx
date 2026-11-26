@@ -28,13 +28,13 @@ export default function Services() {
     },
     {
       icon: Handshake,
-      title: 'Budget-friendly & Value - Packed',
-      description: 'Unbeatable prices on top-quality products buy smart and save money every day',
+      title: 'Budget-Friendly & Value-Packed',
+      description: 'Unbeatable prices on top-quality products. Buy smart and save money every day.',
       features: [
-        'Competitive Price',
+        'Competitive Prices',
         'Bulk Quantity Discount',
-        'Value For Money',
-        'Customer Budget Friendly'
+        'Value for Money',
+        'Fits Every Budget'
       ]
     },
     {

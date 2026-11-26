@@ -25,14 +25,14 @@ export default function WhyChooseUs() {
     {
       icon: Shield,
       title: 'Trusted by Thousands',
-      description: '500+ satisfied customer across India trust our products',
+      description: '500+ satisfied customers across India trust our products',
       color: 'text-primary',
       tile: 'bg-primary-50 group-hover:bg-primary'
     },
     {
       icon: Truck,
       title: 'Nationwide Distribution',
-      description: 'Efficient delivery network across nation wide with timely service',
+      description: 'Efficient delivery network across the nation with timely service',
       color: 'text-secondary',
       tile: 'bg-secondary-50 group-hover:bg-secondary'
     },
@@ -91,7 +91,7 @@ export default function WhyChooseUs() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Why Choose Bright Paper?"
-          subtitle="We have a dedicated cutting center that enables us to supply customized sizes in both sheet and reel form. As a super stockist, we ensure timely and reliable delivery to meet our customers’ requirements."
+          subtitle="We have a dedicated cutting centre that enables us to supply customized sizes in both sheet and reel form. As a super stockist, we ensure timely and reliable delivery to meet our customers’ requirements."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

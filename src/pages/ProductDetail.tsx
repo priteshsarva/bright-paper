@@ -44,7 +44,7 @@ const PRODUCT_DATA: ProductData = {
     features: [
       'High strength and durability',
       'Excellent printability',
-      'Moisture resistant',
+      'Moisture-resistant',
       'Smooth surface finish',
       'Cost-effective solution',
       'Available in various GSM options'
@@ -94,7 +94,7 @@ const PRODUCT_DATA: ProductData = {
     specifications: [
       { label: 'GSM Range', value: '90-350 GSM' },
       { label: 'Finish', value: 'Gloss, Matte, Satin' },
-      { label: 'Coating', value: 'Double sided (C2S)' },
+      { label: 'Coating', value: 'Double-sided (C2S)' },
       { label: 'Brightness', value: '91% and above' }
     ],
     features: [
@@ -178,7 +178,7 @@ const PRODUCT_DATA: ProductData = {
     specifications: [
       { label: 'GSM Range', value: '200-400 GSM' },
       { label: 'Coating', value: 'Single & Double coated' },
-      { label: 'Sizes', value: 'Custom available' },
+      { label: 'Sizes', value: 'Custom sizes available' },
       { label: 'Finish', value: 'High gloss, Matte' }
     ],
     features: [
@@ -186,7 +186,7 @@ const PRODUCT_DATA: ProductData = {
       'Superior print quality',
       'High whiteness',
       'Good folding properties',
-      'Moisture resistant coating',
+      'Moisture-resistant coating',
       'Food-grade options'
     ],
     applications: [

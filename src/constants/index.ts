@@ -37,7 +37,7 @@ export const COMPANY_INFO = {
     // youtube: 'https://www.youtube.com/yourprofile',
   },
   address: {
-    street: 'Plot no 128/129, 2nd floor, Laxminarayan industrial estate, BRC compound, Opp Daksheshwar mahadev temple, Udhana-pandesara',
+    street: 'Plot No. 128/129, 2nd Floor, Laxminarayan Industrial Estate, BRC Compound, Opp. Daksheshwar Mahadev Temple, Udhana-Pandesara',
     city: 'Surat',
     state: 'Gujarat',
     country: 'India',
@@ -72,7 +72,7 @@ export const OWNER_INFO = {
     // youtube: 'https://www.youtube.com/yourprofile',
   },
   address: {
-    street: 'Plot no 128/129, 2nd floor, Laxminarayan industrial estate, BRC compound, Opp Daksheshwar mahadev temple, Udhana-pandesara',
+    street: 'Plot No. 128/129, 2nd Floor, Laxminarayan Industrial Estate, BRC Compound, Opp. Daksheshwar Mahadev Temple, Udhana-Pandesara',
     city: 'Surat',
     state: 'Gujarat',
     country: 'India',
@@ -168,7 +168,7 @@ export const NAVIGATION_MENU = [
 ];
 
 export const KEY_METRICS = [
-  { label: 'Annual Turnover', value: '50,000 Tons', icon: 'TrendingUp' },
+  { label: 'Annual Sales Volume', value: '50,000 Tons', icon: 'TrendingUp' },
   { label: 'Active Clients', value: '500+', icon: 'Users' },
   { label: 'Cities Served', value: 'Cities', icon: 'MapPin' },
   { label: 'Years of Excellence', value: '19+', icon: 'Award' }

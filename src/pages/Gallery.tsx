@@ -47,7 +47,7 @@ export default function Gallery() {
     { id: 4, category: 'finished-products', title: 'Achievement', description: '', url: img4 },
     { id: 5, category: 'applications', title: 'OFFSET PRINTING MACHINE', description: '', url: img5 },
     { id: 6, category: 'applications', title: 'RIGID BOX', description: '', url: img6 },
-    { id: 7, category: 'applications', title: 'CORROGATION MACHINE', description: '', url: img7 },
+    { id: 7, category: 'applications', title: 'CORRUGATION MACHINE', description: '', url: img7 },
     // { id: 8, category: 'finished-products', title: 'Retail Packaging', description: 'Attractive retail packaging', url: img8 },
     // { id: 9, category: 'applications', title: 'Industrial Use', description: 'Durable paper for industrial applications', url: img9 },
     // { id: 10, category: 'textures', title: 'Recycled Paper Texture', description: 'Eco-friendly recycled paper', url: img10 },

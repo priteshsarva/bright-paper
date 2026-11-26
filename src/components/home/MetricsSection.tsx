@@ -8,7 +8,7 @@ export default function MetricsSection() {
     {
       icon: TrendingUp,
       value: COMPANY_INFO.turnover,
-      label: 'Annual Turnover',
+      label: 'Annual Sales Volume',
       color: 'text-primary',
       // Manual override for animation
       animate: {
@@ -75,7 +75,7 @@ export default function MetricsSection() {
     },
     {
       icon: Target,
-      label: 'Annual Turnover',
+      label: 'Annual Sales Volume',
       animate: {
         end: 50000,
         suffix: ' Tons'

@@ -61,7 +61,7 @@ export default function HeroSection() {
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
                 {COMPANY_INFO.turnover}
               </div>
-              <div className="text-sm md:text-base text-neutral-600">Annual Turnover</div>
+              <div className="text-sm md:text-base text-neutral-600">Annual Sales Volume</div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-primary mb-2">

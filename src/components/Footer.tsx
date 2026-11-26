@@ -58,7 +58,7 @@ export default function Footer() {
               {COMPANY_INFO.tagline}
             </p>
             <p className="text-black text-sm">
-              Since {COMPANY_INFO.establishedYear} | Serving across india
+              Since {COMPANY_INFO.establishedYear} | Serving across India
             </p>
             <div className="flex space-x-4 mt-4">
 
@@ -178,7 +178,7 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <MapPin className="text-primary mt-1" size={18} />
                 <a href={COMPANY_INFO.address.mapLink} target="_blank" rel="noopener noreferrer" className="text-black hover:text-primary transition-colors">
-                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state},
+                  {COMPANY_INFO.address.city}, {COMPANY_INFO.address.state}
                 </a>
 
               </li>

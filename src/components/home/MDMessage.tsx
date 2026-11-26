@@ -77,12 +77,12 @@ export default function MDMessage() {
             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
               A Legacy of Trust and Quality
             </h2>
-            <div className="space-y-4 text-lg text-neutral-700 leading-relaxed">
+            <div className="space-y-4 text-lg text-neutral-700 leading-relaxed sm:text-justify">
               <p>
                 For over {new Date().getFullYear() - COMPANY_INFO.establishedYear} years, {COMPANY_INFO.name} has been at the forefront of delivering premium paper products to industries across India.
               </p>
               <p>
-                Our commitment to excellence, sustainable practices, and customer satisfaction has earned us the trust of over {COMPANY_INFO.dealerCount} customers nationwide.
+                Our commitment to excellence, sustainable practices, and customer satisfaction has earned us the trust of {COMPANY_INFO.dealerCount} customers nationwide.
               </p>
               <p>
                 As we continue to grow and innovate, we remain dedicated to our founding principles: quality, reliability, and environmental responsibility.

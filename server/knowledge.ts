@@ -75,7 +75,7 @@ const PRODUCTS: ProductFacts[] = [
 export const PRODUCT_NAMES = PRODUCTS.map((p) => p.name);
 
 const COMPANY = `Bright Paper — premium paper products for sustainable packaging.
-Established 2007. Serves 28 cities across India, 500+ dealers, 50,000 tons annual turnover.
+Established 2007. Serves 28 cities across India, 500+ dealers. Supplies about 50,000 tons of paper and board a year (sales volume, not revenue).
 Address: Plot no 128/129, 2nd floor, Laxminarayan Industrial Estate, BRC Compound,
 opposite Daksheshwar Mahadev Temple, Udhana-Pandesara, Surat, Gujarat 394210, India.
 Phone / WhatsApp: +91 63579 12345. Email: info@brightpaper.co.in.
