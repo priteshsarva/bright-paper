@@ -45,3 +45,34 @@ export function productSeo(name: string, description: string) {
     description: `${description.replace(/\.$/, '')}. Buy ${name} from Bright Paper, Surat, in custom sheet and reel sizes with bulk supply across India.`,
   };
 }
+
+/**
+ * Product names and one-line descriptions by URL slug. Used for each product
+ * page's SEO, both in the app and in the build-time prerender (vite.config.ts),
+ * which cannot import ProductDetail.tsx because of its image imports.
+ * Keep in step with PRODUCT_DATA in src/pages/ProductDetail.tsx.
+ */
+export const PRODUCT_SEO: Record<string, { name: string; description: string }> = {
+  fbb: { name: 'FBB (Folding Box Board)', description: 'Premium folding box board for packaging' },
+  sbs: { name: 'SBS (Solid Bleached Sulfate)', description: 'High-quality solid bleached sulfate board' },
+  'duplex-board': { name: 'Duplex Board', description: 'Premium quality duplex board for packaging solutions' },
+  'virgin-paper': { name: 'Virgin Kraft Paper', description: 'High-grade virgin paper products' },
+  'recycled-kraft-paper': { name: 'Recycled Kraft Paper', description: 'Durable kraft paper for various industrial applications' },
+  'art-paper': { name: 'Art Paper', description: 'Ultra-smooth coated paper for high-quality printing' },
+  'kappa-board': { name: 'Kappa Board', description: 'Heavy-duty stiff board for rigid packaging' },
+};
+
+/** Every public route with its title and description (drives the build-time prerender). */
+export function allRouteSeo(): { path: string; title: string; description: string }[] {
+  return [
+    { path: '/about', ...PAGE_SEO.about },
+    { path: '/products', ...PAGE_SEO.products },
+    { path: '/gallery', ...PAGE_SEO.gallery },
+    { path: '/services', ...PAGE_SEO.services },
+    { path: '/contact', ...PAGE_SEO.contact },
+    ...Object.entries(PRODUCT_SEO).map(([slug, p]) => ({
+      path: `/products/${slug}`,
+      ...productSeo(p.name, p.description),
+    })),
+  ];
+}

@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+# Build-time page copies; they are served at the real URLs (/products, /about, ...)
+Disallow: /prerender/
 
 Sitemap: https://brightpaper.co.in/sitemap.xml
